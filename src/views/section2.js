@@ -44,10 +44,9 @@ const Section2 = () => {
                 <video 
                     ref={videoRef} 
                     src="https://upnextfm.s3.us-east-1.amazonaws.com/ads/actinup.mp4" 
-                    autoplay 
+                    autoPlay 
                     muted 
-                    playsinline 
-                    webkit-playsinline 
+                    playsInline 
                     loop
                     className="video-background"
                     onTimeUpdate={updateProgress}
