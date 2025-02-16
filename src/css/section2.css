@@ -70,3 +70,11 @@
     width: 100%;
     cursor: pointer;
 }
+
+.sec2-alert {
+    margin-bottom: 0;
+    background: black;
+    border-radius: 0;
+    color: ghostwhite;
+    font-size: 20px;
+}

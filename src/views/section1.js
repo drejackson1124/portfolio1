@@ -50,14 +50,6 @@ function Section1() {
         }
     };
 
-    // const handleSeek = (index, e) => {
-    //     const audio = audioRefs.current[index];
-    //     if (audio) {
-    //         const newTime = (e.target.value / 100) * audio.duration;
-    //         audio.currentTime = newTime;
-    //     }
-    // };
-
     const handleSeek = (index, e) => {
         const audio = audioRefs.current[index];
         if (audio) {
@@ -70,14 +62,6 @@ function Section1() {
         }
     };
     
-
-    // const updateProgress = (index) => {
-    //     const audio = audioRefs.current[index];
-    //     if (audio) {
-    //         const progressPercent = (audio.currentTime / audio.duration) * 100 || 0;
-    //         setProgress((prev) => ({ ...prev, [index]: progressPercent }));
-    //     }
-    // };
     const updateProgress = (index) => {
         const audio = audioRefs.current[index];
         if (audio) {
@@ -115,16 +99,11 @@ function Section1() {
         arrows: true,
         autoplay: false,
         autoplaySpeed: 4000,
-        swipe: true
+        swipe: true,
+        adaptiveHeight: false
     };
 
     return (
-        <div>
-            <div className="row">
-                <div className="col-12">
-                    <div className="alert sec1-alert">Playlist Worthy <i class="fa-sharp fa-thin fa-music"></i></div>
-                </div>
-            </div>
             <div className="slider-container p-0">
                 <Slider {...settings}>
                     {ads.map((ad, index) => (
@@ -135,8 +114,7 @@ function Section1() {
                             </div>
                             <img src={ad.media_photo} alt={ad.artist} className="ad-image" />
                             <div className="overlay">
-                                <h3 className="artist-name mb-0">{ad.handle} <i class="fa-sharp fa-thin fa-comment"></i> {ad.comments.length}</h3>
-                                {/* <h6 className="mb-0"><i class="fa-sharp fa-thin fa-comment"></i> {ad.comments.length}</h6> */}
+                                <h3 className="artist-name mb-0 pink">{ad.handle}</h3>
                                 <div className="custom-audio-player">
                                     <button className="play-pause" onClick={() => togglePlay(index)}>
                                         <i className={`fa ${playingIndex === index ? "fa-pause" : "fa-play"}`}></i>
@@ -166,7 +144,6 @@ function Section1() {
                     ))}
                 </Slider>
             </div>
-        </div>
     );
     
 }

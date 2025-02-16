@@ -36,7 +36,7 @@ const Section2 = () => {
         <div className="container p-0">
             <div className="row">
                 <div className="col-12">
-                    <div className="alert sec1-alert">Featured Artist <i class="fa-sharp fa-thin fa-heart"></i></div>
+                    <div className="alert sec2-alert">Featured Artist <i class="fa-sharp fa-thin fa-heart pink"></i></div>
                 </div>
             </div>
             <div className="section2-container">
@@ -52,8 +52,8 @@ const Section2 = () => {
                 ></video>
                 <div className="controls-overlay">
                     <div className="user-info">
-                        <i className="fa-thin fa-address-card"></i>
-                        <span>@tommy</span>
+                        {/* <i className="fa-thin fa-address-card"></i> */}
+                        <span className="pink">@tommy</span>
                     </div>
                     <div className="control-buttons">
                         <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>
@@ -61,7 +61,7 @@ const Section2 = () => {
                     </div>
                     <input 
                         type="range" 
-                        className="progress-bar"
+                        className="progress-bar seek-bar"
                         min="0" 
                         max={videoRef.current ? videoRef.current.duration : 100} 
                         value={progress} 

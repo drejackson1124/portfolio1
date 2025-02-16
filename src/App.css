@@ -38,3 +38,17 @@
   height: 1px; /* Adjust thickness */
   background: linear-gradient(to right, dodgerblue, #ff7eb3); /* Gradient Colors */
 }
+
+.dodgerblue {
+  color: dodgerblue;
+  font-weight: bold;
+}
+
+.pink {
+  color: #ff7eb3;
+  font-weight: bold;
+}
+
+.debug-border {
+  border: 1px solid red !important;
+}
