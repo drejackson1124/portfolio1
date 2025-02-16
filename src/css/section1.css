@@ -1,0 +1,151 @@
+.slider-container {
+    width: 100%;
+    margin: auto;
+    padding: 20px 0;
+}
+
+.ad-box {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin: 0 25px;
+}
+
+.ad-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-radius: 10px; */
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.artist-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.audio-player {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.sec1-alert {
+    margin-bottom: 0;
+    background: black;
+    border-radius: 0;
+    color: ghostwhite;
+    font-size: 20px;
+}
+
+.custom-audio-player {
+    background: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+/* Hide the default thumb */
+/* .seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+    background: transparent;
+} */
+
+/* Seek Bar Styles */
+.seek-bar {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px; /* Thickness */
+    background: black; /* Background of full track */
+    border-radius: 5px;
+    outline: 2px solid white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Track Styling */
+.seek-bar::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: black; /* Default track color */
+    border-radius: 5px;
+}
+
+/* Custom Thumb - Invisible */
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: dodgerblue;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    margin-top: -4px; /* Centers the thumb on the track */
+}
+
+/* Firefox Custom Thumb */
+.seek-bar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: dodgerblue;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Dynamic Progress Effect */
+.seek-bar {
+    background: linear-gradient(to right, dodgerblue 0%, #ff7eb3 0%) no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.1s linear;
+}
+
+.sec1-usercard-container {
+    position: absolute;
+    top: 10px; /* Adjust spacing as needed */
+    right: 10px; /* Adjust spacing as needed */
+    background: black; /* Optional background */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.sec1-usercard {
+    font-size: 20px; /* Adjust size as needed */
+    color: dodgerblue; /* Change to desired color */
+}
+
+
+
+
