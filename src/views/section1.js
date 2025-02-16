@@ -23,6 +23,7 @@ function Section1() {
     useEffect(() => {
         const getAds = async () => {
             const result = await helpers.getAds();
+            console.log(result);
             setAds(result);
         };
         getAds();
@@ -117,57 +118,11 @@ function Section1() {
         swipe: true
     };
 
-    // return (
-    //     <div>
-    //         <div className="row">
-    //             <div className="col-12">
-    //                 <div className="alert sec1-alert">Playlist Worthy <i class="fa-thin fa-music"></i></div>
-    //             </div>
-    //         </div>
-    //         <div className="slider-container p-0">
-    //             <Slider {...settings}>
-    //                 {ads.map((ad, index) => (
-    //                     <div key={index} className="ad-box">
-    //                         <i class="fa-thin fa-address-card sec1-usercard"></i>
-    //                         <img src={ad.media_photo} alt={ad.artist} className="ad-image" />
-    //                         <div className="overlay">
-    //                             <h3 className="artist-name">{ad.handle}</h3>
-    //                             <div className="custom-audio-player">
-    //                                 <button className="play-pause" onClick={() => togglePlay(index)}>
-    //                                     <i className={`fa ${playingIndex === index ? "fa-pause" : "fa-play"}`}></i>
-    //                                 </button>
-    //                                 <input 
-    //                                     type="range" 
-    //                                     className="seek-bar" 
-    //                                     min="0" 
-    //                                     max="100"
-    //                                     step="1"
-    //                                     value={progress[index] || 0}
-    //                                     onChange={(e) => handleSeek(index, e)}
-    //                                 />
-    //                             </div>
-    //                             {ad.media_music && (
-    //                                 <audio 
-    //                                     ref={(el) => (audioRefs.current[index] = el)}
-    //                                     className="audio-player"
-    //                                     onTimeUpdate={() => updateProgress(index)}
-    //                                     onEnded={() => setPlayingIndex(null)}
-    //                                 >
-    //                                     <source src={ad.media_music} type="audio/mpeg" />
-    //                                 </audio>
-    //                             )}
-    //                         </div>
-    //                     </div>
-    //                 ))}
-    //             </Slider>
-    //         </div>
-    //     </div>
-    // );
     return (
         <div>
             <div className="row">
                 <div className="col-12">
-                    <div className="alert sec1-alert">Playlist Worthy <i className="fa-thin fa-music"></i></div>
+                    <div className="alert sec1-alert">Playlist Worthy <i class="fa-sharp fa-thin fa-music"></i></div>
                 </div>
             </div>
             <div className="slider-container p-0">
@@ -180,7 +135,8 @@ function Section1() {
                             </div>
                             <img src={ad.media_photo} alt={ad.artist} className="ad-image" />
                             <div className="overlay">
-                                <h3 className="artist-name">{ad.handle}</h3>
+                                <h3 className="artist-name mb-0">{ad.handle} <i class="fa-sharp fa-thin fa-comment"></i> {ad.comments.length}</h3>
+                                {/* <h6 className="mb-0"><i class="fa-sharp fa-thin fa-comment"></i> {ad.comments.length}</h6> */}
                                 <div className="custom-audio-player">
                                     <button className="play-pause" onClick={() => togglePlay(index)}>
                                         <i className={`fa ${playingIndex === index ? "fa-pause" : "fa-play"}`}></i>
