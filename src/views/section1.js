@@ -23,7 +23,6 @@ function Section1() {
     useEffect(() => {
         const getAds = async () => {
             const result = await helpers.getAds();
-            console.log(result);
             setAds(result);
         };
         getAds();

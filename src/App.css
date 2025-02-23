@@ -24,6 +24,10 @@
   color: white;
 }
 
+.navbar-logo:hover {
+  color: white;
+}
+
 .navbar {
   background: black;
   position: relative;
@@ -51,4 +55,8 @@
 
 .debug-border {
   border: 1px solid red !important;
+}
+
+.navbar-icon:hover {
+  color: #ff7eb3;
 }

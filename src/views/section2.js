@@ -33,12 +33,6 @@ const Section2 = () => {
     };
 
     return (
-        <div className="container p-0">
-            <div className="row">
-                <div className="col-12">
-                    <div className="alert sec2-alert">Featured Artist <i class="fa-sharp fa-thin fa-heart pink"></i></div>
-                </div>
-            </div>
             <div className="section2-container">
             <div className="video-wrapper">
                 <video 
@@ -70,7 +64,6 @@ const Section2 = () => {
                     />
                 </div>
             </div>
-        </div>
         </div>
     );
 };
