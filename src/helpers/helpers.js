@@ -14,7 +14,19 @@ const helpers = {
     signin: async (obj) => {
         const result = await axios.post(`${api}/signin`, obj);
         return result.data;
-    }
+    },
+    createpost: async (obj) => {
+        const result = await axios.post(`${api}/create-post`, obj);
+        return result.data;
+    },
+    uploadfile: async (obj) => {
+        const result = await axios.post(`${api}/upload`, obj);
+        return result.data;
+    },
+    getposts: async (obj) => {
+        const result = await axios.post(`${api}/posts`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

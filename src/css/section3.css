@@ -1,0 +1,79 @@
+/* Container holding all post cards in a horizontal scrollable row */
+.section3-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  
+  /* Display a message if no posts are available */
+  .section3-no-posts {
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  /* Each post card has a fixed width */
+  .post-card {
+    flex: 0 0 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background: pink;
+    height: 400px;
+  }
+  
+  /* Post title styling */
+  .post-title {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+  }
+  
+  /* Media container: images, videos, or audio fill the card width */
+  .post-media {
+    margin-bottom: 10px;
+    height: 200px; /* fixed height */
+  }
+  
+  .post-media img,
+  .post-media video {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* crop to fill container; use 'contain' to letterbox instead */
+  }
+  
+  /* Ensure the audio element fits inside the container */
+  .post-media audio {
+    width: 100%;
+  }
+
+  .audio-media-container {
+    width: 100%;
+  }
+  
+  .audio-cover {
+    width: 100%;
+    height: auto;
+  }
+  
+  
+  /* Styling for body text */
+  .post-body {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for tags */
+  .post-tags {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the timestamp */
+  .post-timestamp {
+    font-size: 12px;
+    color: #777;
+  }
+  

@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../css/section1.css';
+import FullPageSpinner from "./spinner";
 
 function Section1() {
     const [ads, setAds] = useState([]);
@@ -86,7 +87,7 @@ function Section1() {
     
 
     if (!ads.length) {
-        return <h1>Nothing to display</h1>;
+        return <FullPageSpinner/>
     }
 
     const settings = {

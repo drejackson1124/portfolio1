@@ -25,11 +25,12 @@ function Signin() {
     try {
       // Call your sign in API helper function
       const result = await helpers.signin({ username, password });
+
       // Assuming result.status contains the HTTP status code
       if (result.statusCode === 200) {
         setSuccess('Sign in successful!');
         // Set user context with the returned user data (adjust as needed)
-        setUser({username});
+        setUser(JSON.parse(result.body));
         navigate('/');
       } else if (result.statusCode === 400) {
         setError('Incorrect password.');
