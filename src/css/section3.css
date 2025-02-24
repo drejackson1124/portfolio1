@@ -18,7 +18,8 @@
   /* Each post card has a fixed width */
   .post-card {
     flex: 0 0 300px;
-    border: 1px solid #ccc;
+    border: 1px solid #ff7eb3;
+    border-bottom: 1px solid dodgerblue;
     border-radius: 5px;
     padding: 10px;
     background: black;
