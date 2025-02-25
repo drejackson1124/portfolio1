@@ -96,7 +96,7 @@ function Section1() {
         speed: 500,
         slidesToShow: 2, 
         slidesToScroll: 2,
-        arrows: true,
+        arrows: false,
         autoplay: false,
         autoplaySpeed: 4000,
         swipe: true,

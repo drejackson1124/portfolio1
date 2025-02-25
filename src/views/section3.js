@@ -1,22 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import helpers from "../helpers/helpers";
 import "../css/section3.css";
+import CustomAudioPlayer from "./customaudio";
+import VideoComponent from "./customvideo";
+import SurveyModal from "./surveymodal";
 
-// Helper function to fetch posts
+
 const fetchPosts = async () => {
   const response = await helpers.getposts({});
-  // If response.body is a string, parse it; otherwise assume it's already an object.
   return typeof response.body === "string"
     ? JSON.parse(response.body)
     : response.body;
 };
 
 function Section3({ posts, setPosts }) {
+ const [showSurvey, setShowSurvey] = useState(false);
+ const [selectedPost, setSelectedPost] = useState(null);
   useEffect(() => {
     const getPosts = async () => {
       try {
         const fetchedData = await fetchPosts();
-        // Expected structure: { posts: [...] }
         setPosts(fetchedData.posts);
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -36,32 +39,20 @@ const renderMedia = (post) => {
     if (/\.(jpeg|jpg|png|gif)$/.test(lower)) {
       return <img src={mediaUrl} alt="post media" />;
     } else if (/\.(mp4|mov)$/.test(lower)) {
-      return (
-        <video src={mediaUrl} controls controlsList="nodownload" style={{ width: "100%" }}>
-          Your browser does not support the video tag.
-        </video>
-      );
+    return <VideoComponent post={post} />;
     } else if (/\.(mp3|wav)$/.test(lower)) {
-      return (
-        <div className="audio-media-container">
-          {post.coverPhoto && (
-            <img
-              src={post.coverPhoto}
-              alt="cover"
-              className="audio-cover"
-            />
-          )}
-          <audio src={mediaUrl} controls controlsList="nodownload" style={{ width: "100%" }} className="mt-2">
-            Your browser does not support the audio element.
-          </audio>
-        </div>
+    return (
+        <CustomAudioPlayer src={mediaUrl} coverPhoto={post.coverPhoto} post={post} />
       );
     } else {
       return <div>Unsupported media type.</div>;
     }
   };
   
-
+  const openSurveyForPost = (post) => {
+    setSelectedPost(post);
+    setShowSurvey(true);
+  };
 
 
   return (
@@ -69,16 +60,24 @@ const renderMedia = (post) => {
       {posts.map((post) => (
         <div key={post.postid} className="post-card">
           <div className="post-media">{renderMedia(post)}</div>
-          <h3 className="post-title">{post.title}</h3>
+          <h3 className="post-title">{post.title} <span className="white">|</span> @{post.username}</h3>
           <p className="post-body">{post.body}</p>
-          <p className="post-tags">
-            Tags: {Array.isArray(post.tags) ? post.tags.join(", ") : ""}
-          </p>
+          <button className="btn btn-primary btn-sm w-100 rate-btn" onClick={() => openSurveyForPost(post)}>
+              Rate
+          </button>
         </div>
       ))}
+     {showSurvey && selectedPost && (
+        <SurveyModal
+          show={showSurvey}
+          onClose={() => setShowSurvey(false)}
+          post={selectedPost}
+        />
+      )}
     </div>
   );
 }
 
 export default Section3;
+
 

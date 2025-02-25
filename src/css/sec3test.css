@@ -1,0 +1,109 @@
+/* Container for all post cards in a horizontal scrollable row */
+.section3-container {
+  display: flex;
+  flex-wrap: nowrap;              /* Ensure items stay in one row */
+  overflow-x: auto;               /* Enable horizontal scrolling */
+  gap: 10px;
+  align-items: flex-start;
+  padding: 20px;
+  
+  /* Custom scrollbar for WebKit browsers */
+  scrollbar-width: thin;          /* For Firefox */
+  scrollbar-color: dodgerblue #f1f1f1;
+}
+
+.section3-container::-webkit-scrollbar {
+  height: 10px;                   /* Thickness of horizontal scrollbar */
+}
+
+.section3-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+.section3-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, dodgerblue, #ff7eb3);
+  border-radius: 5px;
+}
+
+/* Display a message if no posts are available */
+.section3-no-posts {
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Each post card */
+.post-card {
+  flex: 0 0 300px;
+  height: 400px;                /* Fixed height for consistency */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ff7eb3;
+  border-top: 1px solid dodgerblue;
+  border-bottom: 1px solid dodgerblue;
+  border-radius: 5px;
+  padding: 10px;
+  background: black;
+  box-sizing: border-box;
+}
+
+/* Media container: fixed height for media */
+.post-media {
+  height: 200px;                /* Fixed height for media */
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.post-media img,
+.post-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* Crop to fill container */
+}
+
+/* Ensure the audio element fits inside the container */
+.post-media audio {
+  width: 100%;
+}
+
+/* Audio media container (for audio posts with a cover) */
+.audio-media-container {
+  width: 100%;
+}
+
+.audio-cover {
+  width: 100%;
+  height: 200px;                /* Fixed height for cover photo */
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+/* Post title styling */
+.post-title {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+}
+
+/* Styling for body text */
+.post-body {
+  font-size: 14px;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+/* Styling for tags */
+.post-tags {
+  font-size: 12px;
+  color: #ff7eb3;
+  margin-bottom: 10px;
+}
+
+/* Styling for the timestamp */
+.post-timestamp {
+  font-size: 12px;
+  color: dodgerblue;
+}
+
+  
