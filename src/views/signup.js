@@ -57,7 +57,7 @@ function Signup() {
       <div className="row justify-content-center">
         <div className="col-md-6">
           <h2 className="mb-4">
-            Sign Up or <Link to="/signin">Sign In</Link>
+            <span className='white'>Sign Up or</span> <Link to="/signin" className='pink' style={{textDecoration:"none"}}>Sign In</Link>
           </h2>
           {error && (
             <div className="alert alert-danger" role="alert">

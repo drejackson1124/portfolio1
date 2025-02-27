@@ -60,7 +60,7 @@ const renderMedia = (post) => {
       {posts.map((post) => (
         <div key={post.postid} className="post-card">
           <div className="post-media">{renderMedia(post)}</div>
-          <h3 className="post-title">{post.title} <span className="white">|</span> <span className="pink">@{post.username}</span></h3>
+          <h3 className="post-title">{post.title} <span className="white">|</span> <span className="pink">@{post.username}</span> <i class="fa-thin fa-comment-music"></i></h3>
           <p className="post-body">{post.body}</p>
           <button className="btn btn-primary btn-sm w-100 rate-btn" onClick={() => openSurveyForPost(post)}>
               Rate
