@@ -175,7 +175,7 @@ function Section3({ posts, setPosts }) {
                 {post.title} <span className="white">|</span>{" "}
                 <span className="pink">@{post.username}</span>
               </button>{" "}
-              <button
+              {/* <button
                 className="btn btn-primary btn-sm rate-btn"
                 onClick={() => openSurveyForPost(post)}
               >
@@ -183,6 +183,17 @@ function Section3({ posts, setPosts }) {
               </button>
               <button className="btn btn-sm rating-btn">
                 {avgRating ? `${avgRating}/5`: ""}
+              </button> */}
+            </h3>
+            <h3>
+            <button
+                className="btn btn-primary btn-sm rate-btn"
+                onClick={() => openSurveyForPost(post)}
+              >
+                <i className="fa-solid fa-stars rate-icon"></i>{" "} Rate
+              </button>
+              <button className="btn btn-sm rating-btn">
+              <i class="fa-solid fa-star"></i> {avgRating ? `${avgRating}/5`: ""}
               </button>
             </h3>
             <p className="post-body">
