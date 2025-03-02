@@ -73,13 +73,17 @@
   align-items: center;
 }
 
-.oleo-script-swash-caps-bold {
-  font-family: "Oleo Script Swash Caps", serif;
-  font-weight: 700;
+.sigmar-regular {
+  font-family: "Sigmar", sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 
 .white {
   color:white;
+}
+
+.small-font {
+  font-size:10px;
 }
 

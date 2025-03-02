@@ -1,0 +1,52 @@
+.surveymodal-sbtn {
+    background: black;
+    border: 1px solid white;
+    color: white;
+}
+
+.surveymodal-sbtn:hover {
+    background: #ff7eb3;
+    color: black;
+}
+
+/* Target the modal content within your custom class */
+.surveymodal .modal-content {
+    background-color: black;
+    border: 2px solid white;
+  }
+  
+  /* Ensure the header, body, and footer text are white */
+  .surveymodal .modal-header,
+  .surveymodal .modal-body,
+  .surveymodal .modal-footer {
+    color: white;
+  }
+  
+  /* Optionally, remove the default header/footer borders if needed */
+  .surveymodal .modal-header,
+  .surveymodal .modal-footer {
+    border: none;
+  }
+  
+  /* Style the buttons if needed */
+  .surveymodal-cbtn,
+  .surveymodal-sbtn {
+    color: white;
+    border-color: white;
+    background: black;
+  }
+
+  /* Spinner overlay that covers modal body content */
+.spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* semi-transparent overlay */
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

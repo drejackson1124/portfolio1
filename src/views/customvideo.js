@@ -15,6 +15,7 @@ function VideoComponent({ post }) {
       playsInline
       muted
       autoPlay
+      loop
       poster={coverPhoto || undefined}
     >
       Your browser does not support the video tag.
