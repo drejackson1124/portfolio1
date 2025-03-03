@@ -49,8 +49,8 @@ function Signin() {
     <div className="container my-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
-          <h2 className="mb-4">
-            Sign In or <Link to="/signup">Sign Up</Link>
+          <h2 className="mb-4 white">
+            Sign In or <Link to="/signup" className='pink'>Sign Up</Link>
           </h2>
           {error && (
             <div className="alert alert-danger" role="alert">

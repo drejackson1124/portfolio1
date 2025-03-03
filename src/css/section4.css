@@ -1,0 +1,63 @@
+.section4-container {
+  padding: 20px;
+  background-color: #000; /* Black background */
+  color: #fff;            /* White text */
+}
+
+.spinner {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 40px;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  font-weight: bold;
+}
+
+.no-posts {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.text-post-card {
+  position: relative;
+  /* Increase top padding to make room for the tag */
+  padding: 40px 15px 15px 15px;
+  border: 1px solid #ff7eb3;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  background: #111;
+}
+
+/* Tag styling */
+.text-post-tags {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff7eb3;
+  color: black;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: bolder;
+}
+
+  
+.text-post-title {
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+}
+
+.text-post-body {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.text-post-timestamp {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+  

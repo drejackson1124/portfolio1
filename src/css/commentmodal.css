@@ -1,0 +1,34 @@
+.commentmodal .modal-content {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #ff7eb3;
+  }
+  
+  .commentmodal .modal-header,
+  .commentmodal .modal-body,
+  .commentmodal .modal-footer {
+    border: none;
+  }
+  
+  .comment-item {
+    background-color: #111;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .comment-username {
+    color: #ff7eb3;
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .comment-text {
+    margin: 0;
+  }
+
+.sec4-comment-btn {
+    background: black;
+    border: 2px solid white;
+}
+  

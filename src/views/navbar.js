@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext"; // Adjust path as needed
 import helpers from "../helpers/helpers";
 import moment from "moment";
+import TextPostModal from "./postmodal";
 
 function Navbar() {
   const { user } = useContext(UserContext);
@@ -10,6 +11,7 @@ function Navbar() {
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showPostsModal, setShowPostsModal] = useState(false);
   const [postError, setPostError] = useState("");
+  const [showTextPostModal, setShowTextPostModal] = useState(false);
   
   // Post form state
   const [postTitle, setPostTitle] = useState("");
@@ -193,6 +195,15 @@ function Navbar() {
     closePostsModal();
   };
 
+  const openTextPostModal = () => {
+    setShowTextPostModal(true);
+    setShowTooltip(false);
+  };
+
+  const closeTextPostModal = () => {
+    setShowTextPostModal(false);
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg">
@@ -221,8 +232,11 @@ function Navbar() {
                     <Link className="dropdown-item" to="/favorites">
                       Favorites <i className="fa-thin fa-heart"></i>
                     </Link>
+                    <button className="dropdown-item" onClick={openTextPostModal}>
+                      Submit Post <i className="fa-thin fa-pencil"></i>
+                    </button>
                     <button className="dropdown-item" onClick={openPostsModal}>
-                      Posts <i className="fa-thin fa-message-music"></i>
+                      Post Music <i class="fa-thin fa-cloud-arrow-up"></i>
                     </button>
                   </div>
                 )}
@@ -422,6 +436,12 @@ function Navbar() {
           </div>
         </div>
       )}
+
+    <TextPostModal
+        show={showTextPostModal}
+        onClose={closeTextPostModal}
+        user={user}
+      />
     </>
   );
 }

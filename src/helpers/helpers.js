@@ -31,6 +31,14 @@ const helpers = {
         const result = await axios.post(`${api}/submit-rating`, obj);
         return result.data;
     },
+    submittextpost: async (obj) => {
+        const result = await axios.post(`${api}/textpost`, obj);
+        return result.data;
+    },
+    gettextpost: async (obj) => {
+        const result = await axios.post(`${api}/gettextposts`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

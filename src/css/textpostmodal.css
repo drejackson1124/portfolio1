@@ -1,0 +1,17 @@
+/* Custom styles for the text post modal */
+.textpostmodal .modal-content {
+    background-color: black;
+    border: 2px solid white;
+  }
+  
+  .textpostmodal .modal-header,
+  .textpostmodal .modal-body,
+  .textpostmodal .modal-footer {
+    color: white;
+  }
+  
+  .textpostmodal .modal-header,
+  .textpostmodal .modal-footer {
+    border: none;
+  }
+  
