@@ -1,15 +1,70 @@
+/* Main container for text posts */
 .section4-container {
-  padding: 0 20px 10px 20px;
+  padding:10px;
   background-color: #000; /* Black background */
   color: #fff;            /* White text */
+  overflow-x: auto;       /* Enable horizontal scrolling */
+  display: flex;
+  flex-wrap: nowrap;      /* Keep slides in one row */
+  gap: 20px;
 }
 
-.spinner {
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 40px;
+/* Custom scrollbar for horizontal scrolling */
+.section4-container::-webkit-scrollbar {
+  height: 5px; /* Thickness of horizontal scrollbar */
 }
 
+.section4-container::-webkit-scrollbar-track {
+  background: black;
+}
+
+.section4-container::-webkit-scrollbar-thumb {
+  background: dodgerblue;
+}
+
+/* Each slide is a vertical stack of two posts */
+.post-slide {
+  flex: 0 0 auto; /* Prevent slides from shrinking or wrapping */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Individual post card styling */
+.text-post-card {
+  position: relative;
+  border: 1px solid #ff7eb3;
+  padding: 15px;
+  background: #111;
+}
+
+/* Tag styling positioned in the top-left corner */
+.text-post-tags {
+  background-color: #ff7eb3;
+  color: black;
+  padding: 8px 8px;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+/* Post title styling */
+.text-post-title {
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+}
+
+/* Post body styling */
+.text-post-body {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+/* Comment button styling */
+.sec4-comment-btn {
+  margin-top: 10px;
+}
+
+/* Additional styling as needed... */
 .error {
   text-align: center;
   color: red;
@@ -21,43 +76,11 @@
   font-size: 1.2rem;
 }
 
-.text-post-card {
-  position: relative;
-  /* Increase top padding to make room for the tag */
-  padding: 40px 15px 15px 15px;
-  border: 1px solid dodgerblue;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  background: #111;
+.spinner {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 40px;
 }
 
-/* Tag styling */
-.text-post-tags {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #ff7eb3;
-  color: black;
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-size: 0.8rem;
-  font-weight: bolder;
-}
-
-  
-.text-post-title {
-  margin: 0 0 10px 0;
-  font-size: 1.4rem;
-}
-
-.text-post-body {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-.text-post-timestamp {
-  font-size: 0.8rem;
-  color: #aaa;
-}
 
   
