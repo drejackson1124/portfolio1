@@ -13,7 +13,6 @@
   .comment-item {
     background-color: #111;
     margin-bottom: 10px;
-    padding: 10px;
     border-radius: 4px;
   }
   
@@ -29,6 +28,11 @@
 
 .sec4-comment-btn {
     background: black;
-    border: 2px solid white;
+    border: 1px solid grey;
+}
+
+.discussion-comments {
+  height:80px;
+  overflow-y: scroll;
 }
   

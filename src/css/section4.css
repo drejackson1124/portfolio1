@@ -1,5 +1,5 @@
 .section4-container {
-  padding: 20px;
+  padding: 0 20px 10px 20px;
   background-color: #000; /* Black background */
   color: #fff;            /* White text */
 }
@@ -25,7 +25,7 @@
   position: relative;
   /* Increase top padding to make room for the tag */
   padding: 40px 15px 15px 15px;
-  border: 1px solid #ff7eb3;
+  border: 1px solid dodgerblue;
   margin-bottom: 15px;
   border-radius: 5px;
   background: #111;

@@ -39,6 +39,10 @@ const helpers = {
         const result = await axios.post(`${api}/gettextposts`, obj);
         return result.data;
     },
+    createcomment: async (obj) => {
+        const result = await axios.post(`${api}/create-comment`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

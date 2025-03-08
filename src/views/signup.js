@@ -34,7 +34,7 @@ function Signup() {
 
     try {
       const result = await helpers.signup({ email, username, password });
-      console.log(result);
+      
       // You may want to handle success or error based on the API response here
       if(result.statusCode === 401){
         setError('Email already exists.');

@@ -5,8 +5,10 @@ function Title({title}){
     return (
         <div className="container">
             <div className="row">
-                <div className="alert title-alert mb-0 sigmar-regular">
-                        {title}
+                <div className="col-12">
+                    <div className="alert title-alert mb-0 sigmar-regular">
+                            {title}
+                    </div>
                 </div>
             </div>
         </div>
