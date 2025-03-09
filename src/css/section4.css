@@ -1,44 +1,56 @@
-/* Main container for text posts */
+.section4-wrapper {
+  background-color: #000;
+  color: #fff;
+}
+
+/* The bar containing filter dropdown, you can style as you like */
+.filter-bar {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 40px;
+}
+
+.filter-label {
+  font-weight: bold;
+}
+
 .section4-container {
-  padding:10px;
-  background-color: #000; /* Black background */
-  color: #fff;            /* White text */
-  overflow-x: auto;       /* Enable horizontal scrolling */
+  /* Remove left padding so first slide is flush with screen edge */
+  padding: 10px;
+  background-color: white;
+  color: #fff;
+  overflow-x: auto;      /* Enable horizontal scrolling */
   display: flex;
-  flex-wrap: nowrap;      /* Keep slides in one row */
+  flex-wrap: nowrap;     /* Keep slides in one horizontal row */
   gap: 20px;
+  scroll-behavior: smooth; /* Optional smooth scrolling */
+  margin: 0; /* Ensure no extra container margin on the left */
 }
 
-/* Custom scrollbar for horizontal scrolling */
-.section4-container::-webkit-scrollbar {
-  height: 5px; /* Thickness of horizontal scrollbar */
-}
-
-.section4-container::-webkit-scrollbar-track {
-  background: black;
-}
-
-.section4-container::-webkit-scrollbar-thumb {
-  background: dodgerblue;
-}
-
-/* Each slide is a vertical stack of two posts */
 .post-slide {
-  flex: 0 0 auto; /* Prevent slides from shrinking or wrapping */
-  display: flex;
-  flex-direction: column;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, 1fr);    /* 2 rows, each 1fr */
   gap: 20px;
-}
 
+  /* Force each slide to the same width and height */
+  width: 600px;   /* or any desired fixed width */
+  height: 400px;  /* or any desired fixed height */
+
+  /* Ensures each of the 4 cells is 300×300 in a 2×2 layout (minus gap). */
+}
 /* Individual post card styling */
 .text-post-card {
   position: relative;
   border: 1px solid #ff7eb3;
   padding: 15px;
-  background: #111;
+  background: black;
 }
 
-/* Tag styling positioned in the top-left corner */
+/* Tag styling in top-left corner */
 .text-post-tags {
   background-color: #ff7eb3;
   color: black;
@@ -47,24 +59,24 @@
   font-size: 20px;
 }
 
-/* Post title styling */
+/* Title styling */
 .text-post-title {
   margin: 0 0 10px 0;
   font-size: 1.4rem;
 }
 
-/* Post body styling */
+/* Body styling */
 .text-post-body {
   font-size: 1rem;
   margin-bottom: 10px;
 }
 
-/* Comment button styling */
+/* Comment button */
 .sec4-comment-btn {
   margin-top: 10px;
 }
 
-/* Additional styling as needed... */
+/* Additional styling for errors, spinners, etc. */
 .error {
   text-align: center;
   color: red;
@@ -81,6 +93,7 @@
   font-size: 1.5rem;
   padding: 40px;
 }
+
 
 
   
