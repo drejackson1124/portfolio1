@@ -24,30 +24,19 @@
   overflow-x: auto;      /* Enable horizontal scrolling */
   display: flex;
   flex-wrap: nowrap;     /* Keep slides in one horizontal row */
-  gap: 20px;
+  gap: 10px;
   scroll-behavior: smooth; /* Optional smooth scrolling */
   margin: 0; /* Ensure no extra container margin on the left */
 }
 
-.post-slide {
-  flex: 0 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(2, 1fr);    /* 2 rows, each 1fr */
-  gap: 20px;
-
-  /* Force each slide to the same width and height */
-  width: 600px;   /* or any desired fixed width */
-  height: 400px;  /* or any desired fixed height */
-
-  /* Ensures each of the 4 cells is 300×300 in a 2×2 layout (minus gap). */
-}
-/* Individual post card styling */
+/* Each post card is a flex item with a fixed or auto width */
 .text-post-card {
+  flex: 0 0 auto;       /* Prevent shrinking; each card is displayed horizontally */
   position: relative;
   border: 1px solid #ff7eb3;
   padding: 15px;
   background: black;
+  width: 250px;         /* Or any desired width for the card */
 }
 
 /* Tag styling in top-left corner */

@@ -9,7 +9,7 @@ function Section4() {
   const [error, setError] = useState("");
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
-
+  
   // New: filter state
   const [filter, setFilter] = useState("All");
 
@@ -57,16 +57,10 @@ function Section4() {
     );
   };
 
-  // Derive the filtered posts locally
+  // Derive filtered posts locally
   const filteredPosts = filter === "All"
     ? posts
     : posts.filter((post) => post.primaryTag === filter);
-
-  // Group the filtered posts in chunks of 4 for pagination (4 posts per slide)
-  const groupedPosts = [];
-  for (let i = 0; i < filteredPosts.length; i += 4) {
-    groupedPosts.push(filteredPosts.slice(i, i + 4));
-  }
 
   if (loading) {
     return (
@@ -86,7 +80,7 @@ function Section4() {
 
   return (
     <div className="section4-wrapper">
-      {/* Filter UI (example dropdown) */}
+      {/* Filter UI */}
       <div className="filter-bar">
         <select
           id="filterSelect"
@@ -106,49 +100,49 @@ function Section4() {
       </div>
 
       <div className="section4-container">
-        {groupedPosts.length === 0 ? (
-          <p className="no-posts">No text posts available.</p>
+        {filteredPosts.length === 0 ? (
+          <p className="no-posts">No text posts available for the selected filter.</p>
         ) : (
-          groupedPosts.map((group, index) => (
-            <div key={index} className="post-slide">
-              {group.map((post) => (
-                <div key={post.postId} className="text-post-card">
-                  <div className="text-post-tags">{post.primaryTag}</div>
-                  <h2 className="text-post-title mb-0 mt-2">{post.title}</h2>
-                  <span className="pink mt-2">@{post.username}</span>
-                  <p className="text-post-body">
-                    {post.body.length > 50
-                      ? post.body.slice(0, 50) + "..."
-                      : post.body}
-                  </p>
-                  <button
-                    className="btn btn-secondary sec4-comment-btn mb-2"
-                    onClick={() => openCommentModal(post)}
-                  >
-                    <i className="fa-solid fa-messages"></i>{" "}
-                    {post.comments ? post.comments.length : ""}
-                  </button>
-                </div>
-              ))}
+          filteredPosts.map((post) => (
+            <div key={post.postId} className="text-post-card">
+              {/* Tag in the corner */}
+              <div className="text-post-tags">{post.primaryTag}</div>
+
+              {/* Post Title and Username */}
+              <h2 className="text-post-title mb-0 mt-2">{post.title.slice(0,20)}</h2>
+
+              {/* Truncated Body */}
+              <p className="text-post-body">
+                {post.body.length > 50 ? post.body.slice(0, 50) + "..." : post.body} <br/>
+                <span className="pink mt-2">@{post.username}</span>
+              </p>
+
+              {/* Comment icon/button */}
+              <button
+                className="btn btn-secondary sec4-comment-btn mb-2"
+                onClick={() => openCommentModal(post)}
+              >
+                <i className="fa-solid fa-messages"></i>{" "}
+                {post.comments ? post.comments.length : ""}
+              </button>
             </div>
           ))
         )}
-
-        {showCommentModal && selectedPost && (
-          <CommentModal
-            show={showCommentModal}
-            onClose={closeCommentModal}
-            post={selectedPost}
-            onCommentAdded={handleCommentAdded}
-          />
-        )}
       </div>
+
+      {showCommentModal && selectedPost && (
+        <CommentModal
+          show={showCommentModal}
+          onClose={closeCommentModal}
+          post={selectedPost}
+          onCommentAdded={handleCommentAdded}
+        />
+      )}
     </div>
   );
 }
 
 export default Section4;
-
 
 
 
