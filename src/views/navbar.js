@@ -553,6 +553,8 @@ function Navbar() {
     let contentType = mediaFile.type;
     if (contentType === "audio/mp3") {
       contentType = "audio/mpeg";
+    }  else if (contentType === "audio/mp4" || contentType === "audio/x-m4a") {
+      contentType = "audio/mp4";
     }
     if (contentType.startsWith("audio/") && !coverPhotoFile) {
       setPostError("For audio posts, please upload a cover photo.");
