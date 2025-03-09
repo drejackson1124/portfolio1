@@ -353,13 +353,13 @@ function Navbar() {
                   </div>
                   <div className="mb-3">
                     <label htmlFor="postMedia" className="form-label">
-                      Media (Picture, Video, or Audio)
+                      Media (Video or Audio)
                     </label>
                     <input
                       type="file"
                       id="postMedia"
                       className="form-control"
-                      accept="image/*,video/*,audio/*"
+                      accept="video/*,audio/mpeg,.mp3"
                       onChange={handleMediaFileChange}
                       required
                     />
