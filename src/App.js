@@ -7,6 +7,7 @@ import SignUp from './views/signup';
 import { UserProvider } from './UserContext';
 import Signin from './views/signin';
 import { useEffect, useState } from 'react';
+import Favorites from './views/favorites';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
                   <Route path="/" element={<Home setPosts={setPosts} posts={posts}/>} />
                   <Route path="/signup" element={<SignUp/>} />
                   <Route path="/signin" element={<Signin/>} />
+                  <Route path="/favorites" element={<Favorites/>} />
                 </Routes>
               </Router>
     </div>

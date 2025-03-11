@@ -1,6 +1,6 @@
 .section4-wrapper {
-  background-color: #000;
-  color: #fff;
+  background-color: black;
+  color: white;
 }
 
 /* The bar containing filter dropdown, you can style as you like */
@@ -19,7 +19,7 @@
 .section4-container {
   /* Remove left padding so first slide is flush with screen edge */
   padding: 10px;
-  background-color: white;
+  /* background-color: black; */
   color: #fff;
   overflow-x: auto;      /* Enable horizontal scrolling */
   display: flex;
@@ -33,19 +33,25 @@
 .text-post-card {
   flex: 0 0 auto;       /* Prevent shrinking; each card is displayed horizontally */
   position: relative;
-  border: 1px solid #ff7eb3;
   padding: 15px;
   background: black;
   width: 250px;         /* Or any desired width for the card */
+  border-radius: 10px;
+  border: 1px solid white;
 }
 
 /* Tag styling in top-left corner */
 .text-post-tags {
-  background-color: #ff7eb3;
-  color: black;
   padding: 8px 8px;
   border-radius: 3px;
   font-size: 20px;
+  border-bottom: 1px solid dodgerblue;
+  font-weight: 100;
+  color: white;
+}
+
+.small-comments-text {
+  font-size:12px;
 }
 
 /* Title styling */
@@ -58,11 +64,6 @@
 .text-post-body {
   font-size: 1rem;
   margin-bottom: 10px;
-}
-
-/* Comment button */
-.sec4-comment-btn {
-  margin-top: 10px;
 }
 
 /* Additional styling for errors, spinners, etc. */
@@ -81,6 +82,10 @@
   text-align: center;
   font-size: 1.5rem;
   padding: 40px;
+}
+
+.post-usr-btn {
+  color: dodgerblue;
 }
 
 

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background: #252526; */
   background: black;
 }
  
@@ -85,5 +86,9 @@
 
 .small-font {
   font-size:10px;
+}
+
+.navbar.sticky-top {
+  z-index: 1030; /* Higher than content, but less than modals */
 }
 

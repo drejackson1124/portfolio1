@@ -114,7 +114,7 @@ function Section1() {
                             </div>
                             <img src={ad.media_photo} alt={ad.artist} className="ad-image" />
                             <div className="overlay">
-                                <h3 className="artist-name mb-0 pink">{ad.handle}</h3>
+                                <h3 className="artist-name mb-0 dodgerblue">{ad.handle}</h3>
                                 <div className="custom-audio-player">
                                     <button className="play-pause" onClick={() => togglePlay(index)}>
                                         <i className={`fa ${playingIndex === index ? "fa-pause" : "fa-play"}`}></i>

@@ -48,7 +48,7 @@ const Section2 = () => {
                 <div className="controls-overlay">
                     <div className="user-info">
                         {/* <i className="fa-thin fa-address-card"></i> */}
-                        <span className="pink">@tommy</span>
+                        <span className="dodgerblue">@tommy</span>
                     </div>
                     <div className="control-buttons">
                         <button onClick={togglePlay}>{isPlaying ? "Pause" : "Play"}</button>

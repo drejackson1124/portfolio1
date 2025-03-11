@@ -43,6 +43,18 @@ const helpers = {
         const result = await axios.post(`${api}/create-comment`, obj);
         return result.data;
     },
+    toggleFavs: async (obj) => {
+        const result = await axios.post(`${api}/favorites`, obj);
+        return result.data;
+    },
+    getFavs: async (obj) => {
+        const result = await axios.post(`${api}/getfavorites`, obj);
+        return result.data;
+    },
+    archiveFavorite: async (obj) => {
+        const result = await axios.post(`${api}/archivefavorite`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

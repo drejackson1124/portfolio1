@@ -11,9 +11,10 @@ function Home({posts, setPosts}){
         <div>
             <Title title={"Most Original Hits"}/>
             <Section1/>
-            <Section2/>
             <Title title={"Find Something New"}/>
             <Section3 posts={posts} setPosts={setPosts}/>
+            <Title title={"Your #1 Choice"}/>
+            <Section2/>
             <Title title={"Join the Discussion"}/>
             <Section4/>
         </div>
