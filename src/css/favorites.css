@@ -1,4 +1,4 @@
-.favorites-container {
+/* .favorites-container {
     padding: 20px;
     background-color: #000;
     color: #fff;
@@ -64,8 +64,106 @@
   
   .archive-btn {
     background-color: transparent;
-    border: 1px solid dodgerblue;
-    color: dodgerblue;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-top: 5px;
+  }
+  
+  .archived-text {
+    color: #ff7eb3;
+    font-weight: bold;
+    margin-top: 5px;
+  } */
+  
+  .favorites-container {
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  .favorites-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .archived-summary {
+    text-align: center;
+    font-size: 1rem;
+    color: #ff7eb3;
+    margin-bottom: 10px;
+  }
+  
+  .no-favorites {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  .favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 posts per row */
+    gap: 20px;
+  }
+  
+  .favorite-card {
+    padding: 15px;
+    border-radius: 5px;
+    background: #111;
+  }
+  
+  .favorite-media {
+    margin-bottom: 10px;
+    height: 200px; /* Fixed height for media container */
+    overflow: hidden;
+  }
+  
+  .favorite-media img,
+  .favorite-media video,
+  .favorite-media audio {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .favorite-title {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+  }
+  
+  .favorite-username {
+    font-size: 0.9rem;
+    color: #ff7eb3;
+    margin-bottom: 10px;
+  }
+  
+  .favorite-body {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .favorite-timestamp {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 10px;
+  }
+  
+  .sec4-comment-btn {
+    background-color: transparent;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .small-comments-text {
+    font-size: 0.8rem;
+  }
+  
+  .archive-btn {
+    background-color: transparent;
+    color: white;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 3px;
@@ -77,7 +175,5 @@
     font-weight: bold;
     margin-top: 5px;
   }
-  
-  
   
   

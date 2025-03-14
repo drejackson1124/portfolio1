@@ -1,0 +1,17 @@
+/* Base styling for the heart icon */
+.heart-icon {
+    cursor: pointer;
+    font-size: 1.2rem; /* Adjust as needed */
+    margin-left: 10px; /* Optional spacing */
+  }
+  
+  /* When the post is favorited */
+  .heart-favorited {
+    color: red; /* or your chosen color */
+  }
+  
+  /* When the post is not favorited */
+  .heart-not-favorited {
+    color: white; /* or your chosen color */
+  }
+  

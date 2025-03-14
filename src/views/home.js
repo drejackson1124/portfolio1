@@ -9,11 +9,11 @@ import Title from "./titlesec";
 function Home({posts, setPosts}){
     return (
         <div>
-            <Title title={"Most Original Hits"}/>
+            <Title title={"Rated Most Original"}/>
             <Section1/>
             <Title title={"Find Something New"}/>
             <Section3 posts={posts} setPosts={setPosts}/>
-            <Title title={"Your #1 Choice"}/>
+            <Title title={"Video Of the Day"}/>
             <Section2/>
             <Title title={"Join the Discussion"}/>
             <Section4/>

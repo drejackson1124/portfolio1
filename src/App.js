@@ -8,10 +8,12 @@ import { UserProvider } from './UserContext';
 import Signin from './views/signin';
 import { useEffect, useState } from 'react';
 import Favorites from './views/favorites';
+import LiveStreamPlayer from './views/lifestream';
 
 function App() {
 
   const [posts, setPosts] = useState([]);
+  const playbackUrl = "https://2094d881f698.us-east-1.playback.live-video.net/api/video/v1/us-east-1.960406969154.channel.kMx6ZWDl3yer.m3u8";
 
   return (
     <UserProvider>
@@ -23,6 +25,7 @@ function App() {
                   <Route path="/signup" element={<SignUp/>} />
                   <Route path="/signin" element={<Signin/>} />
                   <Route path="/favorites" element={<Favorites/>} />
+                  <Route path="/live" element={<LiveStreamPlayer playbackUrl={playbackUrl}/>} />
                 </Routes>
               </Router>
     </div>

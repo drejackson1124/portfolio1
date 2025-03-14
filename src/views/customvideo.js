@@ -6,7 +6,7 @@ function VideoComponent({ post }) {
   
   return (
 <div className="custom-vid-container">
-<p className="sec3-tag">{post.tags[0]}</p>
+{/* <p className="sec3-tag">{post.tags[0]}</p> */}
 <video
       src={media}
       controls

@@ -51,7 +51,7 @@ function CustomAudioPlayer({ src, coverPhoto, post }) {
     <div className="custom-audio-player2">
       {coverPhoto && (
         <div className="audio-cover-container">
-          <p className="sec3-tag">{post.tags[0]}</p>
+          {/* <p className="sec3-tag">{post.tags[0]}</p> */}
           <img src={coverPhoto} alt="Cover" className="audio-cover" />
           <div className="audio-controls-overlay">
             <button className="btn btn-link text-white play-pause-btn" onClick={togglePlay}>
