@@ -1,97 +1,3 @@
-// import React, { useState, useContext } from "react";
-// import { Modal, Button } from "react-bootstrap";
-// import "../css/commentmodal.css";
-// import helpers from "../helpers/helpers";
-// import { UserContext } from "../UserContext";
-// import { Link } from "react-router-dom";
-
-// function CommentModal({ show, onClose, post }) {
-//   const [newComment, setNewComment] = useState("");
-//   const [error, setError] = useState("");
-//   const { user } = useContext(UserContext);
-
-//   const comments = post.comments || [];
-//   const isUserLoggedIn = user && user.username; // true if user is signed in
-
-//   const handleSubmitComment = async () => {
-//     if (!newComment.trim()) {
-//       setError("Please enter a comment.");
-//       return;
-//     }
-//     setError("");
-
-//     if (!isUserLoggedIn) {
-//       setError("You must be signed in to comment.");
-//       return;
-//     }
-
-//     console.log("Adding comment:", newComment, "to post:", post.postId);
-//     let result = await helpers.createcomment({
-//       postId: post.postId,
-//       message: newComment,
-//       user: user.username,
-//     });
-
-//     // Clear the input (you could also update local comments state if needed)
-//     setNewComment("");
-//   };
-
-//   return (
-//     <Modal show={show} onHide={onClose} centered className="commentmodal">
-//       <Modal.Header closeButton>
-//         <Modal.Title>{post.body} - <span className="commentbox-username pink">{post.username}</span></Modal.Title>
-//       </Modal.Header>
-//       <Modal.Body>
-//         {error && <div className="alert alert-danger">{error}</div>}
-
-//         {/* Display existing comments */}
-//         {comments.length === 0 ? (
-//           <p>No comments yet. Be the first to comment!</p>
-//         ) : (
-//           comments.map((c, index) => (
-//             <div key={index} className="comment-item">
-//               <strong className="comment-username">{c.username}</strong>
-//               <p className="comment-text"><span className="comments-posts-username pink">{c.user}:</span> {c.message}</p>
-//             </div>
-//           ))
-//         )}
-
-//         {/* New Comment Input */}
-//         <div className="mt-3">
-//           {isUserLoggedIn ? (
-//             <>
-//               <label htmlFor="newComment" className="form-label">
-//                 Add a Comment
-//               </label>
-//               <textarea
-//                 id="newComment"
-//                 className="form-control"
-//                 rows="3"
-//                 value={newComment}
-//                 onChange={(e) => setNewComment(e.target.value)}
-//               ></textarea>
-//             </>
-//           ) : (
-//             <Link to="/signin" className="dodgerblue">Please sign in to leave a comment.</Link>
-//           )}
-//         </div>
-//       </Modal.Body>
-//       <Modal.Footer>
-//         <Button variant="secondary" onClick={onClose}>
-//           Close
-//         </Button>
-//         {isUserLoggedIn && (
-//           <Button variant="primary" onClick={handleSubmitComment}>
-//             Submit Comment
-//           </Button>
-//         )}
-//       </Modal.Footer>
-//     </Modal>
-//   );
-// }
-
-// export default CommentModal;
-
 import React, { useState, useContext, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "../css/commentmodal.css";
@@ -160,7 +66,7 @@ function CommentModal({ show, onClose, post, onCommentAdded }) {
     <Modal show={show} onHide={onClose} centered className="commentmodal">
       <Modal.Header closeButton>
         <Modal.Title>
-          {post.body} - <span className="commentbox-username dodgerblue">{post.username}</span>
+          <span className="cm-post-title">{post.title}</span> <br/> <span className="cm-post-body">{post.body} <span className="commentbox-username dodgerblue">@{post.username}</span></span>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -185,9 +91,6 @@ function CommentModal({ show, onClose, post, onCommentAdded }) {
         <div className="mt-3">
           {isUserLoggedIn ? (
             <>
-              <label htmlFor="newComment" className="form-label">
-                Add a Comment
-              </label>
               <textarea
                 id="newComment"
                 className="form-control"

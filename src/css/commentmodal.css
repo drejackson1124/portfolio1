@@ -1,7 +1,7 @@
 .commentmodal .modal-content {
-    background-color: #000;
+    background-color: black;
     color: #fff;
-    border: 2px solid #ff7eb3;
+    border: 1px solid white;
   }
   
   .commentmodal .modal-header,
@@ -28,6 +28,23 @@
 
 .sec4-comment-btn {
     background: black;
+}
+
+.cm-post-title {
+  color: white;
+  font-weight: bold;
+}
+
+.cm-post-body {
+  font-weight: 100;
+}
+
+.commentbox-username {
+  font-size: 15px;
+}
+
+.discussion-comments {
+  border-bottom: 1px solid white;
 }
 
   

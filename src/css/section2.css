@@ -1,28 +1,32 @@
-.section2-container {
+/* .section2-container {
+    padding: 0 20px;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .featured-video {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .featured-video h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+  
+  .featured-video-player {
     position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .featured-video-player video {
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.video-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 10px 10px;
-    border: 1px solid white;
-}
-
-.video-background {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.controls-overlay {
+    height: auto;
+    display: block;
+  }
+  
+  .controls-overlay {
     position: absolute;
     bottom: 10%;
     left: 50%;
@@ -34,49 +38,154 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    color: white;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-}
-
-.user-info i {
-    font-size: 24px;
-}
-
-.control-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-.control-buttons button {
+  }
+  
+  .user-info {
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  .control-buttons button {
     background: none;
-    border: 1px solid white;
-    color: white;
+    border: 1px solid #fff;
+    color: #fff;
     padding: 5px 10px;
-    border-radius: 5px;
+    margin: 0 5px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.control-buttons button:hover {
-    background: white;
-    color: black;
-}
-
-.progress-bar {
+    border-radius: 3px;
+  }
+  
+  .progress-bar {
     width: 100%;
     cursor: pointer;
-}
+  }
+  
+  .featured-favorite {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .video-card {
+    border: 1px solid dodgerblue;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .video-card-footer {
+    padding: 10px;
+    text-align: center;
+  } */
 
-.sec2-alert {
-    margin-bottom: 0;
-    background: black;
-    border-radius: 0;
-    color: ghostwhite;
-    font-size: 20px;
-}
+  .section2-container {
+    padding: 0 20px;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  /* Featured Video Styles */
+  .featured-video {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .featured-video h2 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+  }
+  
+  .featured-video-player {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .featured-video-player video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .controls-overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user-info {
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  .control-buttons button {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .featured-favorite {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Grid for Other Videos */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
+    gap: 20px;
+  }
+  
+  .video-card {
+    border-radius: 5px;
+    overflow: hidden;
+    background: #111;
+    position: relative;
+  }
+  
+  .video-card-media {
+    position: relative;
+  }
+  
+  .video-card-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.6);
+    padding: 5px 8px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .video-card-username {
+    color: #fff;
+    font-size: 0.9rem;
+  }
+  

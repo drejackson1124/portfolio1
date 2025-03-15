@@ -55,6 +55,10 @@ const helpers = {
         const result = await axios.post(`${api}/archivefavorite`, obj);
         return result.data;
     },
+    getvotd: async (obj) => {
+        const result = await axios.get(`${api}/getvotd`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

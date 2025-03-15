@@ -20,6 +20,8 @@
     flex: 0 0 300px;
     background: black;
     width: 100px;
+    border:1px solid white;
+    border-radius: 3px;
     /* height: 400px; */
   }
 

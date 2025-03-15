@@ -189,6 +189,7 @@ function Navbar() {
       media: s3_url, // URL for the main media file
       username: user.username,
       genre: selectedTags[0],
+      contentType: contentType,
       coverPhoto: cover_s3_url,
     };
     
@@ -220,7 +221,7 @@ function Navbar() {
         <div className="container-fluid">
           {/* Brand Name */}
           <Link to="/" className="navbar-brand navbar-logo sigmar-regular">
-            UpNextFM
+            O.S.D. Labs
           </Link>
           <div id="navbarNav" className="ms-auto position-relative">
             {user ? (
