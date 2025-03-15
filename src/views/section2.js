@@ -284,10 +284,9 @@ function Section2() {
           {otherVideos.map((video) => (
             <div key={video.postId} className="video-card">
               <div className="video-card-media">
-                <VideoComponent post={video} />
+                <VideoComponent post={video}/>
                 <div className="video-card-overlay">
                   <FavoriteHeart postId={video.postId} initiallyFavorited={video.favorited || false} />
-                  <span className="video-card-username">@{video.username}</span>
                 </div>
               </div>
             </div>

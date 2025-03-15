@@ -86,13 +86,21 @@
     text-align: center;
   } */
 
+
+
+
+
+
+
+
+  
   .section2-container {
-    padding: 0 20px;
+    padding: 20px;
     background-color: #000;
     color: #fff;
   }
   
-  /* Featured Video Styles */
+  /* Featured Video */
   .featured-video {
     text-align: center;
     margin-bottom: 30px;
@@ -115,6 +123,7 @@
     display: block;
   }
   
+  /* Controls for featured video (unchanged) */
   .controls-overlay {
     position: absolute;
     bottom: 10%;
@@ -154,31 +163,44 @@
     text-align: center;
   }
   
-  /* Grid for Other Videos */
+  /* Grid for Other Videos (two columns) */
   .video-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
     gap: 20px;
   }
   
+  /* Each video card now has a fixed height and width ratio */
   .video-card {
+    position: relative;
+    border: 1px solid white;
     border-radius: 5px;
     overflow: hidden;
     background: #111;
-    position: relative;
+    /* Fix a height to keep them uniform, e.g., 200px (adjust as needed) */
+    height: 200px;
   }
   
+  /* Container for the actual media (video/image) */
   .video-card-media {
     position: relative;
+    width: 100%;
+    height: 100%;
   }
   
+  /* Make sure the <video> or <img> inside the card fills the card */
+  .video-card-media video,
+  .video-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crop if aspect ratio doesn't match */
+  }
+  
+  /* Overlay with heart and username in top-left corner */
   .video-card-overlay {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    background: rgba(0,0,0,0.6);
-    padding: 5px 8px;
-    border-radius: 3px;
+    bottom: 10px;
+    right: 10px;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -188,4 +210,5 @@
     color: #fff;
     font-size: 0.9rem;
   }
+  
   

@@ -124,7 +124,7 @@ function Section3({ posts, setPosts }) {
                 <div className="post-media">{renderMedia(post)}</div>
                 <h3 className="post-title">
                   <button className="btn btn-primary btn-sm sec3-artist-btn">
-                    {post.title} <span className="white">|</span>{" "}
+                    {post.title} <br/>
                     <span className="pink">@{post.username}</span>
                   </button>{" "}
                 </h3>

@@ -11,7 +11,7 @@ function VideoComponent({ post }) {
       src={media}
       controls
       controlsList="nodownload"
-      style={{ width: "100%", objectFit: "cover" }}
+      style={{ height: "200px", objectFit:"cover" }}
       playsInline
       muted
       autoPlay
