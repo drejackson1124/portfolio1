@@ -6,7 +6,7 @@ function Title({title}){
         <div className="container">
             <div className="row">
                 <div className="col-12">
-                    <div className="alert title-alert mb-0 sigmar-regular">
+                    <div className="alert title-alert sigmar-regular">
                             {title}
                     </div>
                 </div>

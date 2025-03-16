@@ -9,14 +9,13 @@ import Title from "./titlesec";
 function Home({posts, setPosts}){
     return (
         <div>
-            <Title title={"Rated Most Original"}/>
-            <Section1/>
+            <Title title={<h5 className="home-row-title"><span className="dodgerblue">Join</span> the discussion.</h5>}/>
+            <Section4/>
+            <Section2/>
             <Title title={"Find Something New"}/>
             <Section3 posts={posts} setPosts={setPosts}/>
-            <Title title={"Video Of the Day"}/>
-            <Section2/>
-            <Title title={"Join the Discussion"}/>
-            <Section4/>
+            <Title title={"Rated Most Original"}/>
+            <Section1/>
         </div>
     )
 }

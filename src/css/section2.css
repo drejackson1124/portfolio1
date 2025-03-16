@@ -95,9 +95,17 @@
 
   
   .section2-container {
-    padding: 20px;
+    padding: 0 20px;
     background-color: #000;
     color: #fff;
+  }
+
+  .discussion-row-title {
+    padding: 30px;
+  }
+
+  .votd-display {
+    margin-top: 30px;
   }
   
   /* Featured Video */

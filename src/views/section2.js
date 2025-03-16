@@ -275,7 +275,8 @@ function Section2() {
     <div className="section2-container">
       {featuredVideo && (
         <div className="featured-video">
-            <h5>Submit your music <span className="dodgerblue">here.</span></h5>
+            {/* <h2 className="sigmar-regular votd-display">Video Of The Day</h2> */}
+            <h5 className="discussion-row-title sigmar-regular"><span className="dodgerblue">Submit</span> your music.</h5>
           <FeaturedVideo post={featuredVideo} />
         </div>
       )}
