@@ -277,6 +277,7 @@ function Section2() {
         <div className="featured-video">
             {/* <h2 className="sigmar-regular votd-display">Video Of The Day</h2> */}
             <h5 className="discussion-row-title sigmar-regular"><span className="dodgerblue">Submit</span> your music.</h5>
+            <h6 className="sec2-mini-text">submit your music here and compete for Video Of The Day</h6>
           <FeaturedVideo post={featuredVideo} />
         </div>
       )}

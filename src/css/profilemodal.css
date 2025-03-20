@@ -1,0 +1,72 @@
+.profile-modal .modal-content {
+    background-color: ghostwhite; /* black background */
+    color: #262626;
+    border: none;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+  }
+  
+  .profile-username {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .profile-bio {
+    margin: 10px 0;
+  }
+  
+  .follow-btn-container {
+    margin-bottom: 20px;
+  }
+  
+  .posts-section {
+    margin-top: 20px;
+  }
+  
+  .posts-group {
+    margin-bottom: 20px;
+  }
+  
+  .group-title {
+    font-size: 1.5rem;
+    /* border-bottom: 1px solid dodgerblue; */
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 posts per row */
+    gap: 10px;
+  }
+  
+  .post-card {
+    background: #111;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .post-video,
+  .post-audio,
+  .post-cover {
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  .post-text {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+  }
+  

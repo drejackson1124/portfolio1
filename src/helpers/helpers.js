@@ -59,6 +59,10 @@ const helpers = {
         const result = await axios.get(`${api}/getvotd`, obj);
         return result.data;
     },
+    getuserposts: async (obj) => {
+        const result = await axios.post(`${api}/getuserposts`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

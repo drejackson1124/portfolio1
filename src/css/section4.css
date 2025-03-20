@@ -1,5 +1,5 @@
 .section4-wrapper {
-  background-color: black;
+  background-color: #262626;
   color: white;
 }
 
@@ -37,15 +37,12 @@
   background: black;
   width: 250px;         /* Or any desired width for the card */
   border-radius: 10px;
-  border: 1px solid white;
 }
 
 /* Tag styling in top-left corner */
 .text-post-tags {
-  padding: 8px 8px;
   border-radius: 3px;
   font-size: 20px;
-  border-bottom: 1px solid dodgerblue;
   font-weight: 100;
   color: white;
 }
@@ -86,6 +83,7 @@
 
 .post-usr-btn {
   color: dodgerblue;
+  font-size: 16px;
 }
 
 

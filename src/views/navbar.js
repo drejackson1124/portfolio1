@@ -5,6 +5,7 @@ import { UserContext } from "../UserContext"; // Adjust path as needed
 import helpers from "../helpers/helpers";
 import moment from "moment";
 import TextPostModal from "./postmodal"; // Separate modal for text posts
+import ProfileModal from "./profilemodal";
 
 function Navbar() {
   const { user } = useContext(UserContext);
@@ -221,7 +222,7 @@ function Navbar() {
         <div className="container-fluid">
           {/* Brand Name */}
           <Link to="/" className="navbar-brand navbar-logo sigmar-regular">
-            O.S.D. Labs
+            OSD Labs
           </Link>
           <div id="navbarNav" className="ms-auto position-relative">
             {user ? (
@@ -260,7 +261,7 @@ function Navbar() {
       </nav>
 
       {/* Profile Modal */}
-      {showProfileModal && (
+      {/* {showProfileModal && (
         <div
           className="modal fade show d-block"
           tabIndex="-1"
@@ -316,7 +317,14 @@ function Navbar() {
             </div>
           </div>
         </div>
-      )}
+      )} */}
+
+      <ProfileModal
+        show={showProfileModal}
+        onClose={closeProfileModal}
+        currentUser={user}
+        clickedUser={user}
+      />
 
       {/* Showcase Music Modal */}
       {showPostsModal && (

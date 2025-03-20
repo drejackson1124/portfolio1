@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   /* background: #252526; */
-  background: black;
+  background: #262626;
 }
  
 .navbar-icon {
@@ -12,7 +12,7 @@
   border: 2px solid transparent;
   border-radius: 8px;
   background: linear-gradient(black, black) padding-box, 
-              linear-gradient(45deg, black, #ff7eb3) border-box;
+              linear-gradient(45deg, black, white) border-box;
   color: white;
   text-decoration: none;
   display: inline-flex;
@@ -45,7 +45,7 @@
   left: 0;
   width: 100%;
   height: 1px; /* Adjust thickness */
-  background: linear-gradient(to right, dodgerblue, #ff7eb3); /* Gradient Colors */
+  background: linear-gradient(to right, dodgerblue, white); /* Gradient Colors */
 }
 
 .dodgerblue {
