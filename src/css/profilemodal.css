@@ -1,6 +1,6 @@
 .profile-modal .modal-content {
-    background-color: ghostwhite; /* black background */
-    color: #262626;
+    background-color: black; /* black background */
+    color: white;
     border: none;
   }
   
@@ -21,9 +21,6 @@
     font-weight: bold;
   }
   
-  .profile-bio {
-    margin: 10px 0;
-  }
   
   .follow-btn-container {
     margin-bottom: 20px;
@@ -42,7 +39,7 @@
     /* border-bottom: 1px solid dodgerblue; */
     padding-bottom: 5px;
     margin-bottom: 10px;
-    text-align: center;
+    text-align: left;
   }
   
   .posts-grid {
@@ -69,4 +66,15 @@
     line-height: 1.4;
     margin: 0;
   }
+
+  /* Each post card is a flex item with a fixed or auto width */
+.pm-post-card {
+  flex: 0 0 auto;       /* Prevent shrinking; each card is displayed horizontally */
+  position: relative;
+  padding: 15px;
+  background: black;
+  width: 250px;         /* Or any desired width for the card */
+  border-radius: 10px;
+  color: white;
+}
   

@@ -63,6 +63,10 @@ const helpers = {
         const result = await axios.post(`${api}/getuserposts`, obj);
         return result.data;
     },
+    follow: async (obj) => {
+        const result = await axios.post(`${api}/followbtn`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

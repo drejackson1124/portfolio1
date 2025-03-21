@@ -188,7 +188,6 @@
   /* Each video card now has a fixed height and width ratio */
   .video-card {
     position: relative;
-    border: 1px solid white;
     border-radius: 5px;
     overflow: hidden;
     background: #111;

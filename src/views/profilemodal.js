@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import helpers from "../helpers/helpers";
 import "../css/profilemodal.css";
+import VideoComponent from "./customvideo";
+import CustomAudioPlayer from "./customaudio";
+import FollowButton from "./followbtn";
+import { UserContext } from "../UserContext";
 
 const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
-  // Always call hooks at the top
   const [posts, setPosts] = useState({ audio: [], video: [], text: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { user } = useContext(UserContext);
 
-  // Determine if the profile being viewed belongs to the current user.
   const isOwnProfile =
     currentUser && clickedUser && currentUser.username === clickedUser.username;
 
-  // Use a safe check in the dependency array
   useEffect(() => {
     if (show && clickedUser && clickedUser.username) {
       const fetchUserPosts = async () => {
@@ -38,36 +40,79 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
     }
   }, [show, clickedUser]);
 
-  // Early return if no clickedUser is provided.
   if (!clickedUser) return null;
 
+  // Container for the header with two columns: image and details
+  const headerContainerStyle = {
+    display: "flex",
+    flexDirection: "row",
+  };
+
+  // The image container takes up its own space (fixed width)
+  const imageContainerStyle = {
+    flex: "0 0 150px", // fixed width for the image column
+    objectFit: "cover",
+  };
+
+  // The image fills its container
+  const imageStyle = {
+    width: "100%",
+    height: "auto",
+    display: "block",
+  };
+
+  // Details container for username, follow button, and bio
+  const detailsContainerStyle = {
+    flex: "1 1 auto",
+    textAlign: "left",
+  };
+
+  // Style for horizontal post grids
+  const horizontalStyle = {
+    display: "flex",
+    flexDirection: "row",
+    overflowX: "auto",
+    gap: "10px",
+  };
+
   return (
-    <Modal show={show} onHide={onClose} centered className="profile-modal">
-      <Modal.Header closeButton>
+    <Modal show={show} onHide={onClose} centered className="profile-modal" style={{background:"black"}}>
+      <Modal.Header className="p-0">
         <Modal.Title>
-          <div className="profile-header">
-            <img
-              src={
-                clickedUser.profilePic ||
-                "https://i.ibb.co/0p1LWbB1/defaultpic.jpg"
-              }
-              alt="Profile"
-              className="profile-pic rounded-circle"
-            />
-            <span className="profile-username">@{clickedUser.username}</span>
+          <div className="profile-header" style={headerContainerStyle}>
+            <div className="image-container" style={imageContainerStyle}>
+              <img
+                src={
+                  clickedUser.profilePic ||
+                  "https://i.ibb.co/d0vr9zHf/defaultpic.jpg"
+                }
+                alt="Profile"
+                style={imageStyle}
+              />
+            </div>
+            <div className="details-container" style={detailsContainerStyle}>
+              <span className="profile-username sigmar-regular">
+                {clickedUser.username}
+              </span>
+              <p className="profile-bio">
+                {clickedUser.bio || "No bio available."}
+              </p>
+              <div className="profile-actions">
+                {!isOwnProfile && (
+                //   <Button className="follow-button">
+                //     Follow
+                //   </Button>
+                <FollowButton currentUser={user ? user.username : ""} clickedUser={clickedUser.username}/>
+                )}
+                {isOwnProfile && (
+                    <Button variant="secondary" className="pm-settings"><i class="fa-solid fa-gear"></i></Button>
+                )}
+              </div>
+            </div>
           </div>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div className="profile-bio text-center">
-          <p>{clickedUser.bio || "No bio available."}</p>
-        </div>
-        {/* Only show follow button if viewing someone else's profile */}
-        {!isOwnProfile && (
-          <div className="follow-btn-container text-center">
-            <Button variant="primary">Follow</Button>
-          </div>
-        )}
         {loading ? (
           <div className="spinner">Loading posts...</div>
         ) : error ? (
@@ -76,14 +121,12 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
           <div className="posts-section">
             {posts.video && posts.video.length > 0 && (
               <div className="posts-group">
+                {/* <hr style={{color:"black"}}/> */}
                 <h4 className="group-title">Videos</h4>
-                <div className="posts-grid">
+                <div className="posts-grid" style={horizontalStyle}>
                   {posts.video.map((post) => (
-                    <div key={post.postId} className="post-card">
-                      <video controls className="post-video w-100">
-                        <source src={post.media} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
+                    <div key={post.postId} className="">
+                      <VideoComponent post={post}/>
                     </div>
                   ))}
                 </div>
@@ -91,19 +134,12 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
             )}
             {posts.audio && posts.audio.length > 0 && (
               <div className="posts-group">
+                {/* <hr style={{color:"black"}}/> */}
                 <h4 className="group-title">Songs</h4>
-                <div className="posts-grid">
+                <div className="posts-grid" style={horizontalStyle}>
                   {posts.audio.map((post) => (
-                    <div key={post.postId} className="post-card">
-                      <img
-                        src={post.coverPhoto}
-                        alt="Cover"
-                        className="post-cover w-100"
-                      />
-                      <audio controls className="post-audio w-100">
-                        <source src={post.media} type="audio/mp3" />
-                        Your browser does not support the audio element.
-                      </audio>
+                    <div key={post.postId} className="">
+                     <CustomAudioPlayer src={post.media} coverPhoto={post.coverPhoto}/>
                     </div>
                   ))}
                 </div>
@@ -111,11 +147,18 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
             )}
             {posts.text && posts.text.length > 0 && (
               <div className="posts-group">
+                {/* <hr style={{color:"black"}}/> */}
                 <h4 className="group-title">Conversations</h4>
-                <div className="posts-grid">
+                <div className="posts-grid" style={horizontalStyle}>
                   {posts.text.map((post) => (
-                    <div key={post.postId} className="post-card">
-                      <p className="post-text">{post.body}</p>
+                    <div key={post.postId} className="pm-post-card">
+                    <div className="text-post-tags text-start sigmar-regular">
+                    {/* {post.primaryTag} */}
+                    {post.title.slice(0, 10)}...
+                    </div>
+                    {post.body.length > 50
+                    ? post.body.slice(0, 50) + "..."
+                    : post.body}
                     </div>
                   ))}
                 </div>
@@ -134,3 +177,5 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
 };
 
 export default ProfileModal;
+
+

@@ -14,8 +14,8 @@ function Home({posts, setPosts}){
             <Section2/>
             <Title title={<h5 className="home-row-title">Find something <span className="dodgerblue">new</span></h5>}/>
             <Section3 posts={posts} setPosts={setPosts}/>
-            <Title title={"Rated Most Original"}/>
-            <Section1/>
+            {/* <Title title={"Rated Most Original"}/> */}
+            {/* <Section1/> */}
         </div>
     )
 }

@@ -41,7 +41,7 @@ function Section4() {
   }, []);
 
   useEffect(() => {
-    console.log(selectedPost);
+    
   }, [selectedPost]);
 
   const openCommentModal = (post) => {
@@ -104,7 +104,6 @@ function Section4() {
   const openProfileModal = (post) => {
     setSelectedPost(post);
     setProfileModal(true);
-    console.log("Profile modal set for post:", post);
   };
 
   const closeProfileModal = () => {
@@ -181,7 +180,7 @@ function Section4() {
                   <br />
                 </p>
                 <button 
-                  className="btn btn-sm post-usr-btn mt-1 p-0" 
+                  className="btn btn-sm post-usr-btn mt-1 p-0 sigmar-regular" 
                   onClick={() => openProfileModal(post)}
                   style={{textAlign:"left !important"}}
                 >
