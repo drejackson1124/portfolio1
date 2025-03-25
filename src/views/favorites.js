@@ -278,7 +278,7 @@ function Favorites() {
         </>
       )}
   
-      {textFavorites.length > 0 && (
+      {/* {textFavorites.length > 0 && (
         <>
           <h3 className="section-header text-start mt-5 sigmar-regular mb-4">Conversations</h3>
           <div className="favorites-flex" style={{ display: "flex", flexDirection: "row", overflowX: "auto", gap: "10px" }}
@@ -313,8 +313,53 @@ function Favorites() {
             })}
           </div>
         </>
-      )}
+      )} */}
   
+  {textFavorites.length > 0 && (
+  <>
+    <h3 className="section-header text-start mt-5 sigmar-regular mb-4">Conversations</h3>
+    <div
+      className="favorites-flex"
+      style={{ display: "flex", flexDirection: "row", overflowX: "auto", gap: "10px" }}
+    >
+      {textFavorites.map((fav) => {
+        const formattedDate = new Date(fav.timestamp * 1000).toLocaleString();
+        return (
+          <div key={fav.postId} className="favorite-card2">
+            <h3 className="favorite-title">
+              {fav.title.length > 10 ? fav.title.slice(0, 10) + "..." : fav.title}
+            </h3>
+            <p className="favorite-body">
+              {fav.body && fav.body.length > 30 ? fav.body.slice(0, 30) + "..." : fav.body}
+            </p>
+            <div
+              className="favorite-meta"
+              style={{ display: "flex", alignItems: "center", gap: "10px" }}
+            >
+              <p className="favorite-username">{fav.username}</p>
+              <button
+                className="sec4-comment-btn mb-2"
+                onClick={() => openCommentModal(fav)}
+              >
+                <i className="fa-solid fa-comment"></i>{" "}
+                {fav.comments ? (
+                  <span className="small-comments-text">{fav.comments.length}</span>
+                ) : (
+                  <span className="small-comments-text"></span>
+                )}
+              </button>
+              <button className="archive-btn" onClick={() => handleArchive(fav)}>
+                <i className="fa-solid fa-archive"></i> Archive
+              </button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </>
+)}
+
+
       {showCommentModal && selectedFavorite && (
         <CommentModal
           show={showCommentModal}

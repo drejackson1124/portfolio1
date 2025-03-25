@@ -212,7 +212,7 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
   return (
     <>
       <Modal show={show} onHide={onClose} centered className="profile-modal">
-        <Modal.Header className="p-0">
+        <Modal.Header className="p-0" style={{borderBottom:"none"}}>
           <Modal.Title>
             <div className="profile-header" style={headerContainerStyle}>
               <div
@@ -316,7 +316,7 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={onClose}>
+          <Button className="pm-close-btn" onClick={onClose}>
             Close
           </Button>
         </Modal.Footer>
