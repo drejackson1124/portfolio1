@@ -222,7 +222,7 @@ function Navbar() {
         <div className="container-fluid">
           {/* Brand Name */}
           <Link to="/" className="navbar-brand navbar-logo sigmar-regular">
-            THE PRVGRNDS
+            PROVGRNDS
           </Link>
           <div id="navbarNav" className="ms-auto position-relative">
             {user ? (
@@ -261,70 +261,13 @@ function Navbar() {
       </nav>
 
       {/* Profile Modal */}
-      {/* {showProfileModal && (
-        <div
-          className="modal fade show d-block"
-          tabIndex="-1"
-          role="dialog"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-        >
-          <div className="modal-dialog modal-dialog-centered" role="document">
-            <div className="modal-content">
-              <div className="modal-body">
-                <div className="container">
-                  <div className="row align-items-center">
-                    <div className="col-4 text-center">
-                      <img
-                        src={user.profilePicture || defaultProfilePic}
-                        alt="Profile"
-                        className="img-fluid rounded-circle"
-                        style={{
-                          width: "100px",
-                          height: "100px",
-                          objectFit: "cover",
-                        }}
-                      />
-                    </div>
-                    <div className="col-8">
-                      <h4 className="mb-0">{user.username}</h4>
-                      <div className="d-flex justify-content-between mt-2">
-                        <div className="text-center">
-                          <strong>{user.postsCount || 0}</strong>
-                          <div>Posts</div>
-                        </div>
-                        <div className="text-center">
-                          <strong>{user.followersCount || 0}</strong>
-                          <div>Supporters</div>
-                        </div>
-                        <div className="text-center">
-                          <strong>{user.followingCount || 0}</strong>
-                          <div>Following</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="modal-footer border-0">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={closeProfileModal}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )} */}
-
       <ProfileModal
         show={showProfileModal}
         onClose={closeProfileModal}
         currentUser={user}
         clickedUser={user}
       />
+
 
       {/* Showcase Music Modal */}
       {showPostsModal && (

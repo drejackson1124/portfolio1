@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   /* background: #252526; */
-  background: #262626;
+  background: white;
 }
  
 .navbar-icon {
@@ -95,5 +95,9 @@
 
 .navbar.sticky-top {
   z-index: 1030; /* Higher than content, but less than modals */
+}
+
+.black {
+  color: black;
 }
 

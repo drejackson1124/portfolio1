@@ -1,14 +1,12 @@
-import React from 'react';
+import React from "react";
+import "../css/spinner.css"; // Make sure this file is correctly referenced
 
 const FullPageSpinner = () => {
   return (
     <div className="full-page-spinner">
-      <div className="spinner-border text-light" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
+      <div className="spinner-wheel" />
     </div>
   );
 };
 
 export default FullPageSpinner;
-

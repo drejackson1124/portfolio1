@@ -67,6 +67,22 @@ const helpers = {
         const result = await axios.post(`${api}/followbtn`, obj);
         return result.data;
     },
+    checkfollowstatus: async (obj) => {
+        const result = await axios.post(`${api}/checkfollowstatus`, obj);
+        return result.data;
+    },
+    updatebio: async (obj) => {
+        const result = await axios.post(`${api}/updatebio`, obj);
+        return result.data;
+    },
+    getuser: async (obj) => {
+        const result = await axios.post(`${api}/getuserdetails`, obj);
+        return result.data;
+    },
+    updateprofilepic: async (obj) => {
+        const result = await axios.post(`${api}/updateprofilepic`, obj);
+        return result.data;
+    },
 }
 
 export default helpers;

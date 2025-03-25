@@ -6,7 +6,6 @@
   
   .profile-header {
     display: flex;
-    align-items: center;
     gap: 10px;
   }
   
@@ -17,8 +16,9 @@
   }
   
   .profile-username {
-    font-size: 1.2rem;
+    font-size: 30px;
     font-weight: bold;
+    color: white;
   }
   
   
@@ -72,9 +72,25 @@
   flex: 0 0 auto;       /* Prevent shrinking; each card is displayed horizontally */
   position: relative;
   padding: 15px;
-  background: black;
+  background: #262626;
   width: 250px;         /* Or any desired width for the card */
   border-radius: 10px;
   color: white;
+}
+
+.pm-noposts {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.pm-settings {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.profile-bio {
+  font-size: 14px;
+  margin-bottom: 1em;
 }
   
