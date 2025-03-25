@@ -222,7 +222,7 @@ function Navbar() {
         <div className="container-fluid">
           {/* Brand Name */}
           <Link to="/" className="navbar-brand navbar-logo sigmar-regular">
-            PROVGRNDS
+            OffDaSlab
           </Link>
           <div id="navbarNav" className="ms-auto position-relative">
             {user ? (

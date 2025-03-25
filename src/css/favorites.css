@@ -1,7 +1,7 @@
 .favorites-container {
     padding: 20px;
-    background-color: #000;
-    color: #fff;
+    background-color: white;
+    color: black;
     min-height: 100vh;
   }
   
@@ -29,15 +29,34 @@
   }
   
   .favorite-card {
-    padding: 15px;
     border-radius: 5px;
-    background: #262626;
+    background: black;
   }
+
+  /* New class for flex container to avoid grid conflict */
+  .favorites-flex {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+  }
+
+  /* Explicit width for favorite-card2 */
+  .favorite-card2 {
+    flex: 0 0 250px; /* Fixed width of 250px */
+    border-radius: 5px;
+    background: black;
+    color: white;
+    padding: 20px;
+    text-align: left;
+  }
+
   
   .favorite-media {
     margin-bottom: 10px;
     height: 200px; /* Fixed height for media container */
     overflow: hidden;
+    width: 250px;
   }
   
   .favorite-media img,
