@@ -221,8 +221,8 @@ function Navbar() {
       <nav className="navbar navbar-expand-lg sticky-top">
         <div className="container-fluid">
           {/* Brand Name */}
-          <Link to="/" className="navbar-brand navbar-logo sigmar-regular">
-            OffDaSlab
+          <Link to="/" className="navbar-brand m-0">
+            <img src="https://i.ibb.co/BYvgwD2/IMG-3390-removebg-preview.png" className="logo-img" />
           </Link>
           <div id="navbarNav" className="ms-auto position-relative">
             {user ? (

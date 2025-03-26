@@ -20,14 +20,6 @@
   gap: 8px;
 }
 
-.navbar-logo {
-  color: white;
-  font-size: 20px;
-}
-
-.navbar-logo:hover {
-  color: white;
-}
 
 .navbar {
   background: black;
@@ -93,11 +85,12 @@
   font-size:10px;
 }
 
-.navbar.sticky-top {
-  z-index: 1030; /* Higher than content, but less than modals */
-}
-
 .black {
   color: black;
+}
+
+.logo-img {
+  max-width: 100%;
+  height: auto;
 }
 

@@ -6,6 +6,7 @@ import CommentModal from "./commentmodal";
 import { Link } from "react-router-dom";
 import CustomAudioPlayer from "./customaudio";
 import VideoComponent from "./customvideo";
+import FavoriteHeart from "./favoriteheart";
 
 function Favorites() {
   const { user } = useContext(UserContext);
@@ -202,164 +203,100 @@ function Favorites() {
       {videoFavorites.length > 0 && (
         <>
           <h3 className="section-header text-start mt-5 sigmar-regular mb-4">Favorite Videos</h3>
-          <div className="favorites-grid" style={{ display: "flex", flexDirection: "row", overflowX: "auto", gap: "10px" }}
-          >
-            {videoFavorites.map((fav) => {
-              const formattedDate = new Date(fav.timestamp * 1000).toLocaleString();
-              return (
-                <div key={fav.postId} className="favorite-card">
-                  <div className="favorite-media">
-                    {renderMedia(fav)}
-                  </div>
-                  <h3 className="favorite-title">
-                    {fav.title.length > 10 ? fav.title.slice(0, 10) + "..." : fav.title}
-                  </h3>
-                  <p className="favorite-body">
-                    {fav.body && fav.body.length > 30 ? fav.body.slice(0, 30) + "..." : fav.body}
-                  </p>
-                  <p className="favorite-username">{fav.username}</p>
-                  {/* <button
-                    className="sec4-comment-btn mb-2"
-                    onClick={() => openCommentModal(fav)}
-                  >
-                    <i className="fa-solid fa-comment"></i>{" "}
-                    {fav.comments ? (
-                      <span className="small-comments-text">{fav.comments.length}</span>
-                    ) : (
-                      <span className="small-comments-text"></span>
-                    )}
-                  </button> */}
-                  <button className="archive-btn" onClick={() => handleArchive(fav)}>
-                    <i className="fa-solid fa-archive"></i> Archive
-                  </button>
+          <div className="video-grid">
+            {videoFavorites.map((fav) => (
+              <div key={fav.postId} className="favorite-card video-card">
+                <div className="favorite-media">
+                  {renderMedia(fav)}
                 </div>
-              );
-            })}
+                <div className="video-overlay">
+                <div className="overlay-header">
+                  <p className="favorite-username sigmar-regular dodgerblue">
+                    {fav.username.length > 10 ? fav.username.slice(0,10) + ".." : fav.username}
+                  </p>
+                  <div className="ms-2">
+                  <FavoriteHeart
+                    postId={fav.postId}
+                    initiallyFavorited={true}
+                    className="favorite-heart"
+                  />
+
+                  </div>
+                </div>
+              </div>
+
+                <button className="archive-btn" onClick={() => handleArchive(fav)}>
+                  <i className="fa-solid fa-archive"></i> Archive
+                </button>
+              </div>
+            ))}
           </div>
         </>
       )}
+
   
       {audioFavorites.length > 0 && (
         <>
           <h3 className="section-header text-start mt-5 sigmar-regular mb-4">Songs You Love</h3>
           <div className="favorites-grid" style={{ display: "flex", flexDirection: "row", overflowX: "auto", gap: "10px" }}>
-            {audioFavorites.map((fav) => {
-              const formattedDate = new Date(fav.timestamp * 1000).toLocaleString();
-              return (
-                <div key={fav.postId} className="favorite-card">
-                  <div className="favorite-media">
-                    {renderMedia(fav)}
-                  </div>
-                  <h3 className="favorite-title">
-                    {fav.title.length > 10 ? fav.title.slice(0, 10) + "..." : fav.title}
-                  </h3>
-                  <p className="favorite-body">
-                    {fav.body && fav.body.length > 30 ? fav.body.slice(0, 30) + "..." : fav.body}
-                  </p>
-                  <p className="favorite-username">{fav.username}</p>
-                  {/* <button
-                    className="sec4-comment-btn mb-2"
-                    onClick={() => openCommentModal(fav)}
-                  >
-                    <i className="fa-solid fa-comment"></i>{" "}
-                    {fav.comments ? (
-                      <span className="small-comments-text">{fav.comments.length}</span>
-                    ) : (
-                      <span className="small-comments-text"></span>
-                    )}
-                  </button> */}
-                  <button className="archive-btn" onClick={() => handleArchive(fav)}>
-                    <i className="fa-solid fa-archive"></i> Archive
-                  </button>
+            {audioFavorites.map((fav) => (
+              <div key={fav.postId} className="favorite-card">
+                <div className="favorite-media">
+                  {renderMedia(fav)}
                 </div>
-              );
-            })}
+                <h3 className="favorite-title">
+                  {fav.title.length > 10 ? fav.title.slice(0, 10) + "..." : fav.title}
+                </h3>
+                <p className="favorite-body">
+                  {fav.body && fav.body.length > 30 ? fav.body.slice(0, 30) + "..." : fav.body}
+                </p>
+                <p className="favorite-username">{fav.username}</p>
+                <button className="archive-btn" onClick={() => handleArchive(fav)}>
+                  <i className="fa-solid fa-archive"></i> Archive
+                </button>
+              </div>
+            ))}
           </div>
         </>
       )}
   
-      {/* {textFavorites.length > 0 && (
+      {textFavorites.length > 0 && (
         <>
           <h3 className="section-header text-start mt-5 sigmar-regular mb-4">Conversations</h3>
-          <div className="favorites-flex" style={{ display: "flex", flexDirection: "row", overflowX: "auto", gap: "10px" }}
+          <div
+            className="favorites-flex"
+            style={{ display: "flex", flexDirection: "row", overflowX: "auto", gap: "10px" }}
           >
-            {textFavorites.map((fav) => {
-              const formattedDate = new Date(fav.timestamp * 1000).toLocaleString();
-              return (
-                <div key={fav.postId} className="favorite-card2">
-                  <h3 className="favorite-title">
-                    {fav.title.length > 10 ? fav.title.slice(0, 10) + "..." : fav.title}
-                  </h3>
-                  <p className="favorite-body">
-                    {fav.body && fav.body.length > 30 ? fav.body.slice(0, 30) + "..." : fav.body}
-                  </p>
-                  <p className="favorite-username">{fav.username}</p>
-                  <button
-                    className="sec4-comment-btn mb-2"
-                    onClick={() => openCommentModal(fav)}
-                  >
-                    <i className="fa-solid fa-comment"></i>{" "}
-                    {fav.comments ? (
-                      <span className="small-comments-text">{fav.comments.length}</span>
-                    ) : (
-                      <span className="small-comments-text"></span>
-                    )}
-                  </button>
-                  <button className="archive-btn" onClick={() => handleArchive(fav)}>
-                    <i className="fa-solid fa-archive"></i> Archive
-                  </button>
+            {textFavorites.map((fav) => (
+              <div key={fav.postId} className="text-post-card text-start">
+                <div className="text-post-tags text-start sigmar-regular">
+                  {fav.title.slice(0, 10)}...
                 </div>
-              );
-            })}
+                <p className="text-post-body text-start mb-0 white">
+                  {fav.body && fav.body.length > 50 ? fav.body.slice(0, 50) + "..." : fav.body}
+                  <br />
+                </p>
+                <button 
+                  className="btn btn-sm post-usr-btn mt-1 p-0 sigmar-regular" 
+                  onClick={() => {}}
+                  style={{ textAlign: "left !important" }}
+                >
+                  @{fav.username}
+                </button>
+                <button className="sec4-comment-btn mb-2 ms-1" onClick={() => openCommentModal(fav)}>
+                  <i className="fa-solid fa-comment"></i>{" "}
+                  {fav.comments ? (
+                    <span className="small-comments-text">{fav.comments.length}</span>
+                  ) : (
+                    <span className="small-comments-text"></span>
+                  )}
+                </button>
+              </div>
+            ))}
           </div>
         </>
-      )} */}
+      )}
   
-  {textFavorites.length > 0 && (
-  <>
-    <h3 className="section-header text-start mt-5 sigmar-regular mb-4">Conversations</h3>
-    <div
-      className="favorites-flex"
-      style={{ display: "flex", flexDirection: "row", overflowX: "auto", gap: "10px" }}
-    >
-      {textFavorites.map((fav) => {
-        const formattedDate = new Date(fav.timestamp * 1000).toLocaleString();
-        return (
-          <div key={fav.postId} className="favorite-card2">
-            <h3 className="favorite-title">
-              {fav.title.length > 10 ? fav.title.slice(0, 10) + "..." : fav.title}
-            </h3>
-            <p className="favorite-body">
-              {fav.body && fav.body.length > 30 ? fav.body.slice(0, 30) + "..." : fav.body}
-            </p>
-            <div
-              className="favorite-meta"
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
-            >
-              <p className="favorite-username">{fav.username}</p>
-              <button
-                className="sec4-comment-btn mb-2"
-                onClick={() => openCommentModal(fav)}
-              >
-                <i className="fa-solid fa-comment"></i>{" "}
-                {fav.comments ? (
-                  <span className="small-comments-text">{fav.comments.length}</span>
-                ) : (
-                  <span className="small-comments-text"></span>
-                )}
-              </button>
-              <button className="archive-btn" onClick={() => handleArchive(fav)}>
-                <i className="fa-solid fa-archive"></i> Archive
-              </button>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  </>
-)}
-
-
       {showCommentModal && selectedFavorite && (
         <CommentModal
           show={showCommentModal}
@@ -372,3 +309,4 @@ function Favorites() {
 }
 
 export default Favorites;
+

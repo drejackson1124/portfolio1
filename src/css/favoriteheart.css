@@ -1,8 +1,9 @@
 /* Base styling for the heart icon */
 .heart-icon {
+    position: relative;
     cursor: pointer;
     font-size: 1.2rem; /* Adjust as needed */
-    margin-left: 10px; /* Optional spacing */
+    z-index: 3;
   }
   
   /* When the post is favorited */
