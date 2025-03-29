@@ -22,7 +22,7 @@ function Navbar() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [mediaFile, setMediaFile] = useState(null);
   const [coverPhotoFile, setCoverPhotoFile] = useState(null);
-  const tagOptions = ["Rap", "RnB", "Rock", "Soul", "Country", "New", "Oldie but Goodie", "Chill Vibes", "Get Turnt", "Sensual"];
+  const tagOptions = ["Rap", "RnB", "Rock"];
   
   const tooltipRef = useRef(null);
   const defaultProfilePic = "https://i.ibb.co/0p1LWbB1/defaultpic.jpg";
@@ -124,6 +124,8 @@ function Navbar() {
       content_type: contentType // Use the file's MIME type
     });
     
+    console.log("Presigned result: ", presignedResult);
+
     if (!presignedResult || presignedResult.statusCode !== 200) {
       setPostError("Error obtaining upload URL for media.");
       setShowSpinner(false);
@@ -131,18 +133,25 @@ function Navbar() {
     }
     
     const { upload_url, s3_url } = JSON.parse(presignedResult.body);
+    console.log("presigned properties: ", upload_url, s3_url);
+
+    try {
+      const uploadResponse = await fetch(upload_url, {
+        method: "PUT",
+        headers: { "Content-Type": contentType },
+        body: mediaFile,
+      });
+      console.log("uploadResponse status:", uploadResponse.status);
     
-    // Step 2: Upload the main media file directly to S3 using the presigned URL.
-    const uploadResponse = await fetch(upload_url, {
-      method: "PUT",
-      headers: {
-        "Content-Type": contentType,
-      },
-      body: mediaFile,
-    });
-    
-    if (!uploadResponse.ok) {
-      setPostError("Error uploading media file to S3.");
+      if (!uploadResponse.ok) {
+        console.log("uploadResponse text:", await uploadResponse.text()); // see any S3 error message
+        setPostError("Error uploading media file to S3.");
+        setShowSpinner(false);
+        return;
+      }
+    } catch (err) {
+      console.log("fetch error:", err);
+      setPostError("Network error uploading media file.");
       setShowSpinner(false);
       return;
     }
@@ -193,8 +202,9 @@ function Navbar() {
       contentType: contentType,
       coverPhoto: cover_s3_url,
     };
-    
+    console.log("Post data: ", postData);
     let createPostResult = await helpers.createpost(postData);
+    console.log("create post result: ", createPostResult);
     setShowSpinner(false); // Hide spinner after processing
     if (createPostResult.statusCode === 200) {
       // console.log("Post created successfully", createPostResult);
@@ -278,9 +288,9 @@ function Navbar() {
           style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
         >
           <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
-            <div className="modal-content">
+            <div className="modal-content submitmusic-modal">
               <div className="modal-header border-0">
-                <h5 className="modal-title">Showcase Music</h5>
+                <h5 className="modal-title"><span className="dodgerblue">Showcase Music: </span>Videos are automatically entered for Video of the Day.</h5>
                 <button
                   type="button"
                   className="btn-close"
@@ -301,21 +311,19 @@ function Navbar() {
                 ) : (
                   <form onSubmit={handleCreatePost}>
                     <div className="mb-3">
-                      <label htmlFor="postTitle" className="form-label">
-                        Title
-                      </label>
                       <input
                         type="text"
                         id="postTitle"
                         className="form-control"
                         value={postTitle}
                         onChange={(e) => setPostTitle(e.target.value)}
+                        placeholder="Title here..."
                         required
                       />
                     </div>
                     <div className="mb-3">
                       <label htmlFor="postMedia" className="form-label">
-                        Media (Video or Audio)
+                        Upload video or audio below
                       </label>
                       <input
                         type="file"
@@ -344,7 +352,7 @@ function Navbar() {
                       )}
                     <div className="mb-3">
                       <label className="form-label">
-                        Tags (Select at least one)
+                        What genre best describes this song?
                       </label>
                       <div>
                         {tagOptions.map((tag) => (
@@ -368,32 +376,28 @@ function Navbar() {
                       </div>
                     </div>
                     <div className="mb-3">
-                      <label htmlFor="postBody" className="form-label">
-                        Body
-                      </label>
                       <textarea
                         id="postBody"
                         className="form-control"
                         rows="4"
                         value={postBody}
                         onChange={(e) => setPostBody(e.target.value)}
+                        placeholder="Say something about your music..."
                         required
                       ></textarea>
                     </div>
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn submitmusic-btn">
                       Showcase Music
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={closePostsModal}
+                    >
+                      Close
                     </button>
                   </form>
                 )}
-              </div>
-              <div className="modal-footer border-0">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={closePostsModal}
-                >
-                  Close
-                </button>
               </div>
             </div>
           </div>

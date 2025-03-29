@@ -13,7 +13,7 @@ function TextPostModal({ show, onClose, user }) {
   
 
   // Example tag options (only one can be selected)
-  const tagOptions = ["ISO Features", "Hot Take", "Review", "Question", "ISO Producers", "ISO Writers"];
+  const tagOptions = ["Hot Take", "Review", "Question"];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,7 +49,7 @@ function TextPostModal({ show, onClose, user }) {
   };
 
   return (
-    <Modal show={show} onHide={onClose} centered className="textpostmodal">
+    <Modal show={show} onHide={onClose} centered className="textpostmodal text-start">
       <Modal.Header closeButton>
         <Modal.Title>Create Post</Modal.Title>
       </Modal.Header>
@@ -61,34 +61,33 @@ function TextPostModal({ show, onClose, user }) {
         )}
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="postTitle" className="form-label">
-              Title
-            </label>
+            {/* <label htmlFor="postTitle" className="form-label">
+              Title of post
+            </label> */}
             <input
               type="text"
               id="postTitle"
               className="form-control"
               value={postTitle}
               onChange={(e) => setPostTitle(e.target.value)}
+              placeholder="Post title here..."
               required
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="postBody" className="form-label">
-              Body
-            </label>
             <textarea
               id="postBody"
               className="form-control"
               rows="4"
               value={postBody}
               onChange={(e) => setPostBody(e.target.value)}
+              placeholder="Post content here..."
               required
             ></textarea>
           </div>
           <div className="mb-3">
             <label className="form-label">
-              Pick a tag that best describes this post (Select one)
+              Pick a tag that best describes this post
             </label>
             <div>
               {tagOptions.map((tag) => (
@@ -109,16 +108,19 @@ function TextPostModal({ show, onClose, user }) {
               ))}
             </div>
           </div>
-          <Button type="submit" variant="primary" className="w-100">
+          <Button type="submit" className="pm-submit-btn">
             Create Post
+          </Button>
+          <Button variant="secondary" className="ms-2" onClick={onClose}>
+            Close
           </Button>
         </form>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }

@@ -107,10 +107,11 @@
 
 // export default SurveyModal;
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Modal, Button, Spinner } from "react-bootstrap";
 import "../css/surverymodal.css";
 import helpers from "../helpers/helpers";
+import { UserContext } from '../UserContext';
 
 function SurveyModal({ show, onClose, post }) {
   // States for the three rating categories
@@ -119,6 +120,7 @@ function SurveyModal({ show, onClose, post }) {
   const [originalityRating, setOriginalityRating] = useState(0);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const { user } = useContext(UserContext);
 
   const renderStars = (rating, setRating) => {
     const stars = [];
@@ -146,7 +148,7 @@ function SurveyModal({ show, onClose, post }) {
       user_voting: username,
     };
 
-    if (!username) {
+    if (!user) {
       alert("Please sign in or create an account to give feedback.");
       return;
     }

@@ -11,7 +11,7 @@
   .sec2-mini-text {
     text-align: center;
     padding: 0 50px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 100;
   }
 
@@ -34,6 +34,9 @@
     position: relative;
     max-width: 800px;
     margin: 0 auto;
+    background: black;
+    padding: 10px;
+    border-radius: 10px;
   }
   
   .featured-video-player video {
@@ -44,7 +47,7 @@
   
   /* Controls for featured video (unchanged) */
   .controls-overlay {
-    position: absolute;
+    position: relative;
     bottom: 10%;
     left: 50%;
     transform: translateX(-50%);

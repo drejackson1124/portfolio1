@@ -94,3 +94,31 @@
   height: auto;
 }
 
+.submitmusic-modal {
+  background: black;
+  color: white;
+  text-align: left;
+}
+
+.submitmusic-btn {
+  border: 1px solid white;
+  color: white;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.pm-submit-btn {
+  background: black;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+
+
+
+@media (min-width: 767.98px) { 
+  .App {
+    margin: 0 100px;
+  }
+}
+

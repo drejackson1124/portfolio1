@@ -102,12 +102,6 @@ function Section3({ posts, setPosts }) {
           <option value="All">All</option>
           <option value="Rap">Rap</option>
           <option value="RnB">RnB</option>
-          <option value="Rock">Rock</option>
-          <option value="Soul">Soul</option>
-          <option value="Country">Country</option>
-          <option value="Oldie but Goodie">Oldie but Goodie</option>
-          <option value="Chill Vibes">Chill Vibes</option>
-          <option value="Get Turnt">Get Turnt</option>
           {/* Add more options if needed */}
         </select>
       </div>
@@ -125,7 +119,7 @@ function Section3({ posts, setPosts }) {
                 <h3 className="post-title">
                   <button className="btn btn-primary btn-sm sec3-artist-btn">
                     {post.title} <br/>
-                    <span className="pink">@{post.username}</span>
+                    <span className="dodgerblue">@{post.username}</span>
                   </button>{" "}
                 </h3>
                 <h3>
@@ -142,14 +136,15 @@ function Section3({ posts, setPosts }) {
                   <FavoriteHeart
                     postId={post.postId}
                     initiallyFavorited={isFavorited}
+                    className="sec3-favorite-heart"
                   />
                 </h3>
-                <p className="post-body">
+                {/* <p className="post-body">
                   {post.body.length > 30
                     ? post.body.slice(0, 30) + "..."
                     : post.body
                   }
-                </p>
+                </p> */}
               </div>
             );
           })

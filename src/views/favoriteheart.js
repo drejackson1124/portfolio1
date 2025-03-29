@@ -40,8 +40,8 @@ function FavoriteHeart({ postId, initiallyFavorited }) {
     <i
       className={
         favorited
-          ? "fa-solid fa-heart heart-icon heart-favorited"
-          : "fa-regular fa-heart heart-icon heart-not-favorited"
+          ? "fa-solid fa-heart heart-icon heart-favorited ms-2"
+          : "fa-regular fa-heart heart-icon heart-not-favorited ms-2"
       }
       onClick={toggleFavorite}
     />
