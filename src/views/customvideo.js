@@ -14,7 +14,6 @@ function VideoComponent({ post }) {
       style={{ height: "200px", objectFit:"cover" }}
       playsInline
       muted
-      autoPlay
       loop
       poster={coverPhoto || undefined}
     >
