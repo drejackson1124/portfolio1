@@ -163,8 +163,8 @@ import VideoComponent from "./customvideo";
 import FavoriteHeart from "./favoriteheart";
 import "../css/section2.css";
 
-// LazyVideo component that only renders VideoComponent when in view
-const LazyVideo = ({ post }) => {
+// LazyVideoComponent: Renders a placeholder until the component is in view, then renders VideoComponent.
+const LazyVideoComponent = ({ post }) => {
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -176,23 +176,24 @@ const LazyVideo = ({ post }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 } // Adjust threshold as needed
+      { threshold: 0.25 } // Video loads when 25% visible
     );
     if (containerRef.current) {
       observer.observe(containerRef.current);
     }
     return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
     };
   }, []);
 
   return (
-    <div ref={containerRef} style={{ height: "200px", width: "200px" }}>
+    <div ref={containerRef} style={{ width: "200px", height: "200px" }}>
       {isVisible ? (
         <VideoComponent post={post} />
       ) : (
-        // Placeholder (black box) until the video is in view
-        <div style={{ background: "black", height: "100%", width: "100%" }}></div>
+        <div style={{ background: "black", width: "100%", height: "100%" }} />
       )}
     </div>
   );
@@ -335,7 +336,7 @@ function Section2() {
           {otherVideos.slice(0, 4).map((video) => (
             <div key={video.postId} className="video-card">
               <div className="video-card-media">
-                <LazyVideo post={video} />
+                <LazyVideoComponent post={video} />
                 <div className="video-card-overlay">
                   <FavoriteHeart 
                     postId={video.postId} 
@@ -352,3 +353,4 @@ function Section2() {
 }
 
 export default Section2;
+
