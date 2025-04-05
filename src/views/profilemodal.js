@@ -7,11 +7,14 @@ import CustomAudioPlayer from "./customaudio";
 import FollowButton from "./followbtn";
 import { UserContext } from "../UserContext";
 import FullPageSpinner from "./spinner";
+import CommentModal from "./commentmodal";
 
 const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
   const [posts, setPosts] = useState({ audio: [], video: [], text: [] });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showCommentModal, setShowCommentModal] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
   const { user } = useContext(UserContext);
 
   const isOwnProfile =
@@ -209,6 +212,28 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
     }
   };
 
+  const openCommentModal = (post) => {
+    setSelectedPost(post);
+    setShowCommentModal(true);
+  };
+
+  const closeCommentModal = () => {
+    setShowCommentModal(false);
+    setSelectedPost(null);
+  };
+
+  // Callback to update posts state when a comment is added.
+  const handleCommentAdded = (postId, newCommentObj) => {
+    setPosts((prevPosts) => ({
+      ...prevPosts,
+      text: prevPosts.text.map((post) =>
+        post.postId === postId
+          ? { ...post, comments: [...(post.comments || []), newCommentObj] }
+          : post
+      )
+    }));
+  };
+
   return (
     <>
       <Modal show={show} onHide={onClose} centered className="profile-modal">
@@ -300,7 +325,10 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
                   <h4 className="group-title">Conversations</h4>
                   <div className="posts-grid" style={horizontalStyle}>
                     {posts.text.map((post) => (
-                      <div key={post.postId} className="pm-post-card">
+                      <div key={post.postId} className="pm-post-card" onClick={() => { openCommentModal(post) }}>
+                        <div className="chat-bubble">
+                          {post.comments ? post.comments.length + " talkin'": ""}
+                        </div>
                         <div className="text-post-tags text-start sigmar-regular">
                           {post.title.slice(0, 10)}...
                         </div>
@@ -321,6 +349,15 @@ const ProfileModal = ({ show, onClose, currentUser, clickedUser }) => {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      {showCommentModal && selectedPost && (
+        <CommentModal
+          show={showCommentModal}
+          onClose={closeCommentModal}
+          post={selectedPost}
+          onCommentAdded={handleCommentAdded}
+        />
+      )}
 
       {/* Edit Bio Modal */}
       <Modal show={showEditModal} onHide={handleCloseEditModal} centered>
