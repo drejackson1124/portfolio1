@@ -1,63 +1,31 @@
-/* General Container */
 .section2-container {
-  padding: 10px;
+  padding: 20px;
   background-color: white;
-  color: black;
-}
-
-/* Titles and Text */
-.discussion-row-title {
-  padding: 10px 30px;
-  /* shorthand for 30px 30px 0 30px */
-}
-
-.sec2-mini-text {
-  text-align: center;
-  padding: 0 50px;
-  font-size: 20px;
-  font-weight: 100;
-}
-
-.votd-display {
-  margin-top: 30px;
 }
 
 /* Featured Video */
-.featured-video {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.featured-video h2 {
-  margin-bottom: 10px;
-  font-size: 2rem;
-}
-
 .featured-video-player {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
   background: black;
   padding: 10px;
-  border-radius: 10px;
 }
-
 .featured-video-player video {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Video Grid for Other Videos (Flex Layout) */
+/* Video grid container (flex) */
 .video-grid {
   display: flex;
-  flex-direction: row;
   overflow-x: auto;
   gap: 10px;
   margin: 0 auto;
 }
 
-/* Video Card */
+/* Each video card is 200px by 200px */
 .video-card {
   flex: 0 0 200px;
   height: 200px;
@@ -67,54 +35,75 @@
   overflow: hidden;
 }
 
-/* Media Container */
+/* Media container */
 .video-card-media {
   width: 100%;
   height: 100%;
 }
 
-/* Video fills the container */
+/* Video element fills container */
 .video-background {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Controlled Video Container */
+/* Controlled video container */
 .controlled-video-container {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-/* Custom Controls Overlay at Bottom */
+/* Loading overlay (flashing spinner) */
+.video-loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Controls overlay at bottom */
 .controls-overlay {
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   left: 0;
   right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: black;
+  background: rgba(0, 0, 0, 0.4);
   padding: 5px 10px;
   z-index: 3;
 }
 
-/* Left Controls: Play/Pause, Mute, Heart */
+/* Left side controls: play/pause, mute, heart */
 .controls-left {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-/* Right Controls: Username */
+/* Right side controls: username */
 .controls-right {
   display: flex;
   align-items: center;
 }
 
-/* Buttons for Video Controls */
+/* Buttons styling */
 .play-btn,
 .mute-btn {
   background: transparent;
@@ -125,25 +114,12 @@
   font-size: 1rem;
 }
 
-/* Username in Video Overlay */
+/* Username in overlay */
 .video-username {
-  color: dodgerblue;
+  color: #fff;
   font-size: 0.9rem;
-  font-weight: bolder;
 }
 
-/* Additional spacing for Featured Video */
-.featured-video-player {
-  margin-bottom: 20px;
-}
-
-.top5 {
-  color: dodgerblue;
-}
-
-.bold {
-  font-weight: bold;
-}
 
   
   
