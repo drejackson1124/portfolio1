@@ -17,33 +17,33 @@
 //   const { user } = useContext(UserContext);
 //   const [profileModalLoading, setProfileModalLoading] = useState(false);
 
-//   const openProfileModal = async (post) => {
-//     setProfileModalLoading(true);
-//     try {
-//       // Assuming helpers.getuser returns the full user details.
-//       const response = await helpers.getuser({ username: post.username });
-//       // Update the post object with additional details if needed.
-//       if (response.user && response.user.bio) {
-//         post.bio = response.user.bio;
-//       }
+  // const openProfileModal = async (post) => {
+  //   setProfileModalLoading(true);
+  //   try {
+  //     // Assuming helpers.getuser returns the full user details.
+  //     const response = await helpers.getuser({ username: post.username });
+  //     // Update the post object with additional details if needed.
+  //     if (response.user && response.user.bio) {
+  //       post.bio = response.user.bio;
+  //     }
 
-//       if(response.user && response.user.profilepic){
-//         post.profilepic = response.user.profilepic
-//       }
+  //     if(response.user && response.user.profilepic){
+  //       post.profilepic = response.user.profilepic
+  //     }
 
-//       setSelectedPost(post);
-//       setProfileModal(true);
-//     } catch (error) {
-//       console.error("Error fetching user data:", error);
-//     } finally {
-//       setProfileModalLoading(false);
-//     }
-//   }
+  //     setSelectedPost(post);
+  //     setProfileModal(true);
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error);
+  //   } finally {
+  //     setProfileModalLoading(false);
+  //   }
+  // }
 
-//   const closeProfileModal = () => {
-//     setSelectedPost(null);
-//     setProfileModal(false);
-//   };
+  // const closeProfileModal = () => {
+  //   setSelectedPost(null);
+  //   setProfileModal(false);
+  // };
 
 //   // Listen for global "video-play" events to pause if another video starts playing.
 //   useEffect(() => {
@@ -128,15 +128,15 @@
 //           <span className="video-username" onClick={() => { openProfileModal(post) }}>@{post.username}</span>
 //         </div>
 //       </div>
-//       {profileModal && selectedPost && (
-//         <ProfileModal
-//           show={profileModal}
-//           onClose={closeProfileModal}
-//           currentUser={user}
-//           clickedUser={selectedPost}
-//         />
-//       )}
-//       {profileModalLoading && <FullPageSpinner />}
+      // {profileModal && selectedPost && (
+      //   <ProfileModal
+      //     show={profileModal}
+      //     onClose={closeProfileModal}
+      //     currentUser={user}
+      //     clickedUser={selectedPost}
+      //   />
+      // )}
+      // {profileModalLoading && <FullPageSpinner />}
 //     </div>
 //   );
 // };
@@ -266,11 +266,14 @@
 // export default Section2;
 
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import helpers from "../helpers/helpers";
 import FavoriteHeart from "./favoriteheart";
 import VideoComponent from "./customvideo"; // not used directly here
+import { UserContext } from "../UserContext";
 import "../css/section2.css";
+import ProfileModal from "./profilemodal";
+import FullPageSpinner from "./spinner";
  
 // ControlledVideo: custom video component that fills its container and
 // shows custom controls at the bottom. It displays a flashing loading overlay
@@ -280,6 +283,38 @@ const ControlledVideo = ({ post, autoplay }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [profileModal, setProfileModal] = useState(false);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const { user } = useContext(UserContext);
+  const [profileModalLoading, setProfileModalLoading] = useState(false);
+
+  const openProfileModal = async (post) => {
+    setProfileModalLoading(true);
+    try {
+      // Assuming helpers.getuser returns the full user details.
+      const response = await helpers.getuser({ username: post.username });
+      // Update the post object with additional details if needed.
+      if (response.user && response.user.bio) {
+        post.bio = response.user.bio;
+      }
+
+      if(response.user && response.user.profilepic){
+        post.profilepic = response.user.profilepic
+      }
+
+      setSelectedPost(post);
+      setProfileModal(true);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    } finally {
+      setProfileModalLoading(false);
+    }
+  }
+
+  const closeProfileModal = () => {
+    setSelectedPost(null);
+    setProfileModal(false);
+  };
 
   // Listen for global "video-play" events so that if another video plays,
   // this one pauses.
@@ -361,9 +396,18 @@ const ControlledVideo = ({ post, autoplay }) => {
           <FavoriteHeart postId={post.postId} initiallyFavorited={post.favorited || false} />
         </div>
         <div className="controls-right">
-          <span className="video-username">@{post.username}</span>
+          <span className="video-username" onClick={() => { openProfileModal(post)}}>@{post.username}</span>
         </div>
       </div>
+      {profileModal && selectedPost && (
+        <ProfileModal
+          show={profileModal}
+          onClose={closeProfileModal}
+          currentUser={user}
+          clickedUser={selectedPost}
+        />
+      )}
+      {profileModalLoading && <FullPageSpinner />}
     </div>
   );
 };
@@ -381,7 +425,7 @@ const LazyVideoComponent = ({ post, autoplay = false }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0 }
     );
     if (containerRef.current) {
       observer.observe(containerRef.current);
