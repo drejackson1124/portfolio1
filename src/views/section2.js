@@ -1,51 +1,55 @@
 // import React, { useState, useEffect, useRef, useContext } from "react";
 // import helpers from "../helpers/helpers";
 // import FavoriteHeart from "./favoriteheart";
-// import "../css/section2.css";
+// import VideoComponent from "./customvideo"; // not used directly here
 // import { UserContext } from "../UserContext";
+// import "../css/section2.css";
 // import ProfileModal from "./profilemodal";
 // import FullPageSpinner from "./spinner";
-
-// // ControlledVideo: custom video that fills its container and has custom controls.
-// // When played, it dispatches a global event so that other videos pause.
+ 
+// // ControlledVideo: custom video component that fills its container and
+// // shows custom controls at the bottom. It displays a flashing loading overlay
+// // until the video is fully loaded. When played, it pauses/mutes other videos.
 // const ControlledVideo = ({ post, autoplay }) => {
 //   const videoRef = useRef(null);
 //   const [isPlaying, setIsPlaying] = useState(false);
 //   const [isMuted, setIsMuted] = useState(true);
+//   const [isLoaded, setIsLoaded] = useState(false);
 //   const [profileModal, setProfileModal] = useState(false);
 //   const [selectedPost, setSelectedPost] = useState(null);
 //   const { user } = useContext(UserContext);
 //   const [profileModalLoading, setProfileModalLoading] = useState(false);
 
-  // const openProfileModal = async (post) => {
-  //   setProfileModalLoading(true);
-  //   try {
-  //     // Assuming helpers.getuser returns the full user details.
-  //     const response = await helpers.getuser({ username: post.username });
-  //     // Update the post object with additional details if needed.
-  //     if (response.user && response.user.bio) {
-  //       post.bio = response.user.bio;
-  //     }
+//   const openProfileModal = async (post) => {
+//     setProfileModalLoading(true);
+//     try {
+//       // Assuming helpers.getuser returns the full user details.
+//       const response = await helpers.getuser({ username: post.username });
+//       // Update the post object with additional details if needed.
+//       if (response.user && response.user.bio) {
+//         post.bio = response.user.bio;
+//       }
 
-  //     if(response.user && response.user.profilepic){
-  //       post.profilepic = response.user.profilepic
-  //     }
+//       if(response.user && response.user.profilepic){
+//         post.profilepic = response.user.profilepic
+//       }
 
-  //     setSelectedPost(post);
-  //     setProfileModal(true);
-  //   } catch (error) {
-  //     console.error("Error fetching user data:", error);
-  //   } finally {
-  //     setProfileModalLoading(false);
-  //   }
-  // }
+//       setSelectedPost(post);
+//       setProfileModal(true);
+//     } catch (error) {
+//       console.error("Error fetching user data:", error);
+//     } finally {
+//       setProfileModalLoading(false);
+//     }
+//   }
 
-  // const closeProfileModal = () => {
-  //   setSelectedPost(null);
-  //   setProfileModal(false);
-  // };
+//   const closeProfileModal = () => {
+//     setSelectedPost(null);
+//     setProfileModal(false);
+//   };
 
-//   // Listen for global "video-play" events to pause if another video starts playing.
+//   // Listen for global "video-play" events so that if another video plays,
+//   // this one pauses.
 //   useEffect(() => {
 //     const handleGlobalPlay = (e) => {
 //       if (e.detail !== videoRef.current) {
@@ -61,8 +65,12 @@
 //     };
 //   }, []);
 
+//   const handleLoaded = () => {
+//     setIsLoaded(true);
+//   };
+
 //   const handlePlay = async () => {
-//     // Dispatch a custom event with the current video element as detail.
+//     // Dispatch an event so other videos pause.
 //     window.dispatchEvent(new CustomEvent("video-play", { detail: videoRef.current }));
 //     try {
 //       await videoRef.current.play();
@@ -99,9 +107,16 @@
 //         playsInline
 //         loop
 //         className="video-background"
+//         onLoadedData={handleLoaded}
 //       ></video>
+//       {!isLoaded && (
+//         <div className="video-loading-overlay">
+//           <div className="spinner-border spinner-border-sm" role="status">
+//             <span className="visually-hidden">Loading...</span>
+//           </div>
+//         </div>
+//       )}
 //       <div className="controls-overlay">
-//         {/* Left side: play/pause, mute/unmute, and heart */}
 //         <div className="controls-left">
 //           <button className="play-btn" onClick={togglePlay}>
 //             {isPlaying ? (
@@ -110,39 +125,27 @@
 //               <i className="fa-solid fa-play"></i>
 //             )}
 //           </button>
-//           {/* <button className="mute-btn" onClick={toggleMute}>
-//             {isMuted ? (
-//               <i className="fa-solid fa-volume"></i>
-//             ) : (
-//               <i className="fa-solid fa-volume-xmark"></i>
-//             )}
-//           </button> */}
-//           <FavoriteHeart
-//             postId={post.postId}
-//             initiallyFavorited={post.favorited || false}
-//           />
+//           <FavoriteHeart postId={post.postId} initiallyFavorited={post.favorited || false} />
 //         </div>
-
-//         {/* Right side: username */}
 //         <div className="controls-right">
-//           <span className="video-username" onClick={() => { openProfileModal(post) }}>@{post.username}</span>
+//           <span className="video-username" onClick={() => { openProfileModal(post)}}>@{post.username}</span>
 //         </div>
 //       </div>
-      // {profileModal && selectedPost && (
-      //   <ProfileModal
-      //     show={profileModal}
-      //     onClose={closeProfileModal}
-      //     currentUser={user}
-      //     clickedUser={selectedPost}
-      //   />
-      // )}
-      // {profileModalLoading && <FullPageSpinner />}
+//       {profileModal && selectedPost && (
+//         <ProfileModal
+//           show={profileModal}
+//           onClose={closeProfileModal}
+//           currentUser={user}
+//           clickedUser={selectedPost}
+//         />
+//       )}
+//       {profileModalLoading && <FullPageSpinner />}
 //     </div>
 //   );
 // };
 
-// // LazyVideoComponent: Renders a placeholder until the video container is in view.
-// const LazyVideoComponent = ({ post }) => {
+// // LazyVideoComponent: Renders a placeholder until its container is in view.
+// const LazyVideoComponent = ({ post, autoplay = false }) => {
 //   const containerRef = useRef(null);
 //   const [isVisible, setIsVisible] = useState(false);
 
@@ -154,22 +157,20 @@
 //           observer.disconnect();
 //         }
 //       },
-//       { threshold: 0.25 }
+//       { threshold: 0 }
 //     );
 //     if (containerRef.current) {
 //       observer.observe(containerRef.current);
 //     }
 //     return () => {
-//       if (containerRef.current) {
-//         observer.unobserve(containerRef.current);
-//       }
+//       if (containerRef.current) observer.unobserve(containerRef.current);
 //     };
 //   }, []);
 
 //   return (
 //     <div ref={containerRef} style={{ width: "200px", height: "200px" }}>
 //       {isVisible ? (
-//         <ControlledVideo post={post} autoplay={false}/>
+//         <ControlledVideo post={post} autoplay={autoplay} />
 //       ) : (
 //         <div style={{ background: "black", width: "100%", height: "100%" }} />
 //       )}
@@ -180,7 +181,7 @@
 // const FeaturedVideo = ({ post }) => {
 //   return (
 //     <div className="featured-video-player">
-//       <ControlledVideo post={post} autoplay={true}/>
+//       <ControlledVideo post={post} autoplay={true} />
 //     </div>
 //   );
 // };
@@ -190,7 +191,6 @@
 //   const [otherVideos, setOtherVideos] = useState([]);
 //   const [loading, setLoading] = useState(true);
 //   const [error, setError] = useState("");
-
 
 //   useEffect(() => {
 //     const fetchVideos = async () => {
@@ -241,9 +241,9 @@
 //     <div className="section2-container">
 //       {featuredVideo && (
 //         <div className="featured-video">
-//           <h5 className="discussion-row-title sigmar-regular bold mt-3">
-//             <span className="top5">Top 5</span> Videos ❤️‍🔥
-//           </h5>
+//         <h5 className="discussion-row-title sigmar-regular bold mt-3">
+//              <span className="top5">Top 5</span> Videos ❤️‍🔥
+//            </h5>
 //           <h6>voted by the people</h6>
 //           <FeaturedVideo post={featuredVideo} />
 //         </div>
@@ -269,62 +269,26 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import helpers from "../helpers/helpers";
 import FavoriteHeart from "./favoriteheart";
-import VideoComponent from "./customvideo"; // not used directly here
 import { UserContext } from "../UserContext";
-import "../css/section2.css";
 import ProfileModal from "./profilemodal";
 import FullPageSpinner from "./spinner";
- 
-// ControlledVideo: custom video component that fills its container and
-// shows custom controls at the bottom. It displays a flashing loading overlay
-// until the video is fully loaded. When played, it pauses/mutes other videos.
+import "../css/section2.css";
+
+// ControlledVideo: custom video component that fills its container and has custom controls.
+// It uses a loading overlay until the video has loaded.
 const ControlledVideo = ({ post, autoplay }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [profileModal, setProfileModal] = useState(false);
-  const [selectedPost, setSelectedPost] = useState(null);
   const { user } = useContext(UserContext);
-  const [profileModalLoading, setProfileModalLoading] = useState(false);
 
-  const openProfileModal = async (post) => {
-    setProfileModalLoading(true);
-    try {
-      // Assuming helpers.getuser returns the full user details.
-      const response = await helpers.getuser({ username: post.username });
-      // Update the post object with additional details if needed.
-      if (response.user && response.user.bio) {
-        post.bio = response.user.bio;
-      }
-
-      if(response.user && response.user.profilepic){
-        post.profilepic = response.user.profilepic
-      }
-
-      setSelectedPost(post);
-      setProfileModal(true);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    } finally {
-      setProfileModalLoading(false);
-    }
-  }
-
-  const closeProfileModal = () => {
-    setSelectedPost(null);
-    setProfileModal(false);
-  };
-
-  // Listen for global "video-play" events so that if another video plays,
-  // this one pauses.
+  // Global event listener: pause this video if another video plays.
   useEffect(() => {
     const handleGlobalPlay = (e) => {
-      if (e.detail !== videoRef.current) {
-        if (!videoRef.current.paused) {
-          videoRef.current.pause();
-          setIsPlaying(false);
-        }
+      if (e.detail !== videoRef.current && !videoRef.current.paused) {
+        videoRef.current.pause();
+        setIsPlaying(false);
       }
     };
     window.addEventListener("video-play", handleGlobalPlay);
@@ -338,7 +302,6 @@ const ControlledVideo = ({ post, autoplay }) => {
   };
 
   const handlePlay = async () => {
-    // Dispatch an event so other videos pause.
     window.dispatchEvent(new CustomEvent("video-play", { detail: videoRef.current }));
     try {
       await videoRef.current.play();
@@ -374,6 +337,9 @@ const ControlledVideo = ({ post, autoplay }) => {
         src={post.media}
         playsInline
         loop
+        preload="metadata" 
+        // Optionally add a poster attribute if available:
+        poster={post.poster || ""}
         className="video-background"
         onLoadedData={handleLoaded}
       ></video>
@@ -393,26 +359,26 @@ const ControlledVideo = ({ post, autoplay }) => {
               <i className="fa-solid fa-play"></i>
             )}
           </button>
+          {/* <button className="mute-btn" onClick={toggleMute}>
+            {isMuted ? (
+              <i className="fa-solid fa-volume-xmark"></i>
+            ) : (
+              <i className="fa-solid fa-volume"></i>
+            )}
+          </button> */}
           <FavoriteHeart postId={post.postId} initiallyFavorited={post.favorited || false} />
         </div>
         <div className="controls-right">
-          <span className="video-username" onClick={() => { openProfileModal(post)}}>@{post.username}</span>
+          <span className="video-username" onClick={() => { /* Open profile modal logic */ }}>
+            @{post.username}
+          </span>
         </div>
       </div>
-      {profileModal && selectedPost && (
-        <ProfileModal
-          show={profileModal}
-          onClose={closeProfileModal}
-          currentUser={user}
-          clickedUser={selectedPost}
-        />
-      )}
-      {profileModalLoading && <FullPageSpinner />}
     </div>
   );
 };
 
-// LazyVideoComponent: Renders a placeholder until its container is in view.
+// LazyVideoComponent: Renders a placeholder until the video container is in view.
 const LazyVideoComponent = ({ post, autoplay = false }) => {
   const containerRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -425,7 +391,7 @@ const LazyVideoComponent = ({ post, autoplay = false }) => {
           observer.disconnect();
         }
       },
-      { threshold: 0 }
+      { threshold: 0.25 }
     );
     if (containerRef.current) {
       observer.observe(containerRef.current);
@@ -469,7 +435,6 @@ function Section2() {
             ? JSON.parse(response.body)
             : response.body;
         const videoPosts = data.posts || [];
-        // Sort videos: first by descending favoritesCount, then by ascending timestamp.
         const sortedVideos = videoPosts.sort((a, b) => {
           const favA = Number(a.favoritesCount) || 0;
           const favB = Number(b.favoritesCount) || 0;
@@ -509,10 +474,9 @@ function Section2() {
     <div className="section2-container">
       {featuredVideo && (
         <div className="featured-video">
-        <h5 className="discussion-row-title sigmar-regular bold mt-3">
-             <span className="top5">Top 5</span> Videos ❤️‍🔥
-           </h5>
-          <h6>voted by the people</h6>
+          <h5 className="discussion-row-title sigmar-regular mb-3">
+            Powered by the People, Top 5
+          </h5>
           <FeaturedVideo post={featuredVideo} />
         </div>
       )}
