@@ -1,5 +1,4 @@
 .section2-container {
-  padding: 20px;
   background-color: white;
 }
 
@@ -11,7 +10,6 @@
   background: black;
   padding: 10px;
   margin-bottom: 1em;
-  border-radius: 5px;
 }
 .featured-video-player video {
   width: 100%;
