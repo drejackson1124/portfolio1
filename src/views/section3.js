@@ -116,35 +116,23 @@ function Section3({ posts, setPosts }) {
             return (
               <div key={post.postid} className="post-card">
                 <div className="post-media">{renderMedia(post)}</div>
-                <h3 className="post-title">
-                  <button className="btn btn-primary btn-sm sec3-artist-btn">
-                    {post.title} <br/>
-                    <span className="dodgerblue">@{post.username}</span>
-                  </button>{" "}
-                </h3>
                 <h3>
                   <button
-                    className="btn btn-primary btn-sm rate-btn"
+                    className="btn btn-primary btn-md rate-btn"
                     onClick={() => openSurveyForPost(post)}
                   >
                     <i className="fa-solid fa-stars rate-icon"></i>{" "}Rate
                   </button>
-                  <button className="btn btn-sm rating-btn">
+                  <button className="btn btn-lg rating-btn">
                     <i className="fa-solid fa-star"></i>{" "}
                     {avgRating ? `${avgRating}/5` : ""}
                   </button>
-                  <FavoriteHeart
+                  {/* <FavoriteHeart
                     postId={post.postId}
                     initiallyFavorited={isFavorited}
                     className="sec3-favorite-heart"
-                  />
+                  /> */}
                 </h3>
-                {/* <p className="post-body">
-                  {post.body.length > 30
-                    ? post.body.slice(0, 30) + "..."
-                    : post.body
-                  }
-                </p> */}
               </div>
             );
           })
